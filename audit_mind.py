@@ -432,7 +432,7 @@ Return only JSON.
 
 
 if __name__ == "__main__":
-    api_key = "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"
+    api_key = os.getenv('OPENROUTER_API_KEY')
     auditor = AuditMindSimple(openrouter_api_key=api_key, enable_llm=True)
     
     

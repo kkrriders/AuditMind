@@ -29,7 +29,7 @@ app.add_middleware(
 )
 
 
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', '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')
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
 auditor = AuditMindSimple(openrouter_api_key=OPENROUTER_API_KEY, enable_llm=True)
 
 
