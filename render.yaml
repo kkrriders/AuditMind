@@ -4,7 +4,7 @@ services:
     name: auditMind-api
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
+    startCommand: python3 app.py
     envVars:
       - key: OPENROUTER_API_KEY
         value: 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
