@@ -1,0 +1,14 @@
+# Render.com deployment configuration
+services:
+  - type: web
+    name: auditMind-api
+    env: python
+    buildCommand: pip install -r requirements_web.txt
+    startCommand: python web_api.py
+    envVars:
+      - key: OPENROUTER_API_KEY
+        value: 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
+      - key: PORT
+        value: 10000
+      - key: PYTHONUNBUFFERED
+        value: 1
