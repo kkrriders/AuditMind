@@ -145,6 +145,20 @@ class FileAnalysisRequest(BaseModel):
     context: Optional[str] = None
     history: Optional[List[Dict[str, Any]]] = None
 
+@app.get("/")
+async def root():
+    """Root endpoint - API information"""
+    return {
+        "message": "AuditMind API is running",
+        "version": "1.0.0",
+        "endpoints": {
+            "health": "/health",
+            "analyze": "/analyze",
+            "chat": "/chat",
+            "models": "/models"
+        }
+    }
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
