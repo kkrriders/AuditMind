@@ -1,0 +1,1693 @@
+{
+  "test_timestamp": "2024-01-01T00:00:00Z",
+  "total_vulnerabilities": 42,
+  "code_analysis": {
+    "analysis_id": "ADV_1757510336",
+    "timestamp": "2025-09-10T13:18:56.024981",
+    "filename": "test_vulnerable.py",
+    "language": "python",
+    "analysis_time": 0.001373,
+    "detection_layers": [
+      "AST_STATIC_ANALYSIS",
+      "SEMANTIC_ANALYSIS",
+      "PATTERN_MATCHING"
+    ],
+    "vulnerability_count": 19,
+    "summary": {
+      "total_issues": 19,
+      "risk_level": "HIGH",
+      "severity_breakdown": {
+        "HIGH": 11,
+        "MEDIUM": 8
+      },
+      "category_breakdown": {
+        "injection": 8,
+        "cryptographic_failures": 3,
+        "hardcoded_secrets": 5,
+        "identification_auth_failures": 1,
+        "software_data_integrity": 2
+      },
+      "top_categories": [
+        {
+          "category": "injection",
+          "count": 8
+        },
+        {
+          "category": "hardcoded_secrets",
+          "count": 5
+        },
+        {
+          "category": "cryptographic_failures",
+          "count": 3
+        },
+        {
+          "category": "software_data_integrity",
+          "count": 2
+        },
+        {
+          "category": "identification_auth_failures",
+          "count": 1
+        }
+      ],
+      "critical_issues": 0,
+      "high_issues": 11
+    },
+    "vulnerabilities": [
+      {
+        "id": "AST_OS_SYSTEM_21",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.5,
+        "cwe_id": "CWE-78",
+        "title": "Dangerous Function Call: Command Injection",
+        "description": "Use of os.system() can lead to security vulnerabilities",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 21,
+          "column": 4,
+          "function": "os.system"
+        },
+        "code_snippet": "Line 21: [AST node analysis]",
+        "impact": "Potential command injection vulnerability",
+        "mitigation": [
+          "Avoid using os.system()",
+          "Use safer alternatives",
+          "Validate and sanitize all inputs",
+          "Implement proper input validation"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/78.html",
+          "https://owasp.org/www-project-top-ten/"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "HIGH",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "function_name": "os.system",
+          "arguments": {
+            "arg_count": 1,
+            "has_user_input": false,
+            "has_variables": false,
+            "has_constants": false
+          },
+          "ast_node_type": "Call"
+        }
+      },
+      {
+        "id": "AST_SUBPROCESS_CALL_22",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.5,
+        "cwe_id": "CWE-78",
+        "title": "Dangerous Function Call: Command Injection",
+        "description": "Use of subprocess.call() can lead to security vulnerabilities",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 22,
+          "column": 4,
+          "function": "subprocess.call"
+        },
+        "code_snippet": "Line 22: [AST node analysis]",
+        "impact": "Potential command injection vulnerability",
+        "mitigation": [
+          "Avoid using subprocess.call()",
+          "Use safer alternatives",
+          "Validate and sanitize all inputs",
+          "Implement proper input validation"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/78.html",
+          "https://owasp.org/www-project-top-ten/"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "HIGH",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "function_name": "subprocess.call",
+          "arguments": {
+            "arg_count": 1,
+            "has_user_input": false,
+            "has_variables": true,
+            "has_constants": false
+          },
+          "ast_node_type": "Call"
+        }
+      },
+      {
+        "id": "AST_EVAL_36",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.5,
+        "cwe_id": "CWE-95",
+        "title": "Dangerous Function Call: Code Injection via eval()",
+        "description": "Use of eval() can lead to security vulnerabilities",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 36,
+          "column": 4,
+          "function": "eval"
+        },
+        "code_snippet": "Line 36: [AST node analysis]",
+        "impact": "Potential code injection via eval() vulnerability",
+        "mitigation": [
+          "Avoid using eval()",
+          "Use safer alternatives",
+          "Validate and sanitize all inputs",
+          "Implement proper input validation"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/95.html",
+          "https://owasp.org/www-project-top-ten/"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "HIGH",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "function_name": "eval",
+          "arguments": {
+            "arg_count": 1,
+            "has_user_input": false,
+            "has_variables": true,
+            "has_constants": false
+          },
+          "ast_node_type": "Call"
+        }
+      },
+      {
+        "id": "AST_EXEC_37",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.5,
+        "cwe_id": "CWE-95",
+        "title": "Dangerous Function Call: Code Injection via exec()",
+        "description": "Use of exec() can lead to security vulnerabilities",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 37,
+          "column": 4,
+          "function": "exec"
+        },
+        "code_snippet": "Line 37: [AST node analysis]",
+        "impact": "Potential code injection via exec() vulnerability",
+        "mitigation": [
+          "Avoid using exec()",
+          "Use safer alternatives",
+          "Validate and sanitize all inputs",
+          "Implement proper input validation"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/95.html",
+          "https://owasp.org/www-project-top-ten/"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "HIGH",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "function_name": "exec",
+          "arguments": {
+            "arg_count": 1,
+            "has_user_input": false,
+            "has_variables": true,
+            "has_constants": false
+          },
+          "ast_node_type": "Call"
+        }
+      },
+      {
+        "id": "SEM_CRYPTO_b20d4e37_32",
+        "vulnerability_type": "VulnerabilityType.CRYPTOGRAPHIC_FAILURES",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 7.0,
+        "cwe_id": "CWE-327",
+        "title": "Cryptographic Vulnerability: Weak Hash Algorithm (MD5)",
+        "description": "Weak cryptographic practice detected: Weak Hash Algorithm (MD5)",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 32,
+          "column": 12
+        },
+        "code_snippet": "hashlib.md5(",
+        "impact": "Data compromise, authentication bypass, man-in-the-middle attacks",
+        "mitigation": [
+          "Use strong cryptographic algorithms (AES, SHA-256+)",
+          "Use cryptographically secure random number generators",
+          "Always verify SSL/TLS certificates",
+          "Keep cryptographic libraries updated"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/327.html",
+          "https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "MEDIUM",
+        "detection_method": "SEMANTIC_PATTERN_ANALYSIS",
+        "metadata": {
+          "pattern": "(?i)hashlib\\.md5\\(",
+          "matched_text": "hashlib.md5("
+        }
+      },
+      {
+        "id": "AST_HARDCODED_PASSWORD_8",
+        "vulnerability_type": "VulnerabilityType.HARDCODED_SECRETS",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 7.5,
+        "cwe_id": "CWE-798",
+        "title": "Hardcoded Password",
+        "description": "Hardcoded credential found in variable 'password'",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 8,
+          "column": 0,
+          "variable": "password"
+        },
+        "code_snippet": "Line 8: [AST node analysis]",
+        "impact": "Credentials exposed in source code, version control",
+        "mitigation": [
+          "Use environment variables for secrets",
+          "Implement secure credential management",
+          "Use configuration files outside version control",
+          "Implement secrets scanning in CI/CD"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/798.html",
+          "https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_password"
+        ],
+        "confidence": 0.8,
+        "false_positive_likelihood": 0.2,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "variable_name": "password",
+          "value_length": 25,
+          "pattern_matched": "password"
+        }
+      },
+      {
+        "id": "AST_HARDCODED_API_KEY_9",
+        "vulnerability_type": "VulnerabilityType.HARDCODED_SECRETS",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 7.5,
+        "cwe_id": "CWE-798",
+        "title": "Hardcoded Api Key",
+        "description": "Hardcoded credential found in variable 'api_key'",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 9,
+          "column": 0,
+          "variable": "api_key"
+        },
+        "code_snippet": "Line 9: [AST node analysis]",
+        "impact": "Credentials exposed in source code, version control",
+        "mitigation": [
+          "Use environment variables for secrets",
+          "Implement secure credential management",
+          "Use configuration files outside version control",
+          "Implement secrets scanning in CI/CD"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/798.html",
+          "https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_password"
+        ],
+        "confidence": 0.8,
+        "false_positive_likelihood": 0.2,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "variable_name": "api_key",
+          "value_length": 19,
+          "pattern_matched": "api_key"
+        }
+      },
+      {
+        "id": "AST_HARDCODED_SECRET_9",
+        "vulnerability_type": "VulnerabilityType.HARDCODED_SECRETS",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 7.5,
+        "cwe_id": "CWE-798",
+        "title": "Hardcoded Secret",
+        "description": "Hardcoded credential found in variable 'api_key'",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 9,
+          "column": 0,
+          "variable": "api_key"
+        },
+        "code_snippet": "Line 9: [AST node analysis]",
+        "impact": "Credentials exposed in source code, version control",
+        "mitigation": [
+          "Use environment variables for secrets",
+          "Implement secure credential management",
+          "Use configuration files outside version control",
+          "Implement secrets scanning in CI/CD"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/798.html",
+          "https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_password"
+        ],
+        "confidence": 0.8,
+        "false_positive_likelihood": 0.2,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "variable_name": "api_key",
+          "value_length": 19,
+          "pattern_matched": "secret"
+        }
+      },
+      {
+        "id": "SEM_AUTH_66aea567_14",
+        "vulnerability_type": "VulnerabilityType.IDENTIFICATION_AUTH_FAILURES",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.0,
+        "cwe_id": "CWE-287",
+        "title": "Authentication Vulnerability: Hardcoded Username Check",
+        "description": "Weak authentication pattern detected: Hardcoded Username Check",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 14,
+          "column": 5
+        },
+        "code_snippet": "if username == \"admin\"",
+        "impact": "Authentication bypass, unauthorized access",
+        "mitigation": [
+          "Implement proper authentication mechanisms",
+          "Use secure password hashing (bcrypt, Argon2)",
+          "Implement multi-factor authentication",
+          "Use established authentication frameworks"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/287.html",
+          "https://owasp.org/www-project-top-ten/2017/A2_2017-Broken_Authentication"
+        ],
+        "confidence": 0.8,
+        "false_positive_likelihood": 0.2,
+        "exploitability": "HIGH",
+        "detection_method": "SEMANTIC_PATTERN_ANALYSIS",
+        "metadata": {
+          "pattern": "(?i)if\\s+username\\s*==\\s*[\"\\'][^\"\\']*[\"\\']",
+          "matched_text": "if username == \"admin\""
+        }
+      },
+      {
+        "id": "PAT_CWE_798_8",
+        "vulnerability_type": "VulnerabilityType.HARDCODED_SECRETS",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.9,
+        "cwe_id": "CWE-798",
+        "title": "Hardcoded Password",
+        "description": "Pattern-based detection: Hardcoded Password",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 8,
+          "column": 1
+        },
+        "code_snippet": "password = \"super_secret_password_123\"",
+        "impact": "Security vulnerability detected by pattern matching",
+        "mitigation": [
+          "Review and remediate the identified code pattern"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/798.html"
+        ],
+        "confidence": 0.7,
+        "false_positive_likelihood": 0.3,
+        "exploitability": "MEDIUM",
+        "detection_method": "PATTERN_MATCHING",
+        "metadata": {
+          "pattern": "(?i)password\\s*=\\s*[\"\\'][^\"\\']{8,}[\"\\']",
+          "matched_text": "password = \"super_secret_password_123\""
+        }
+      },
+      {
+        "id": "PAT_CWE_798_18",
+        "vulnerability_type": "VulnerabilityType.HARDCODED_SECRETS",
+        "severity": "SeverityLevel.HIGH",
+        "cvss_score": 8.9,
+        "cwe_id": "CWE-798",
+        "title": "Hardcoded Password",
+        "description": "Pattern-based detection: Hardcoded Password",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 18,
+          "column": 63
+        },
+        "code_snippet": "password='{password}'",
+        "impact": "Security vulnerability detected by pattern matching",
+        "mitigation": [
+          "Review and remediate the identified code pattern"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/798.html"
+        ],
+        "confidence": 0.7,
+        "false_positive_likelihood": 0.3,
+        "exploitability": "MEDIUM",
+        "detection_method": "PATTERN_MATCHING",
+        "metadata": {
+          "pattern": "(?i)password\\s*=\\s*[\"\\'][^\"\\']{8,}[\"\\']",
+          "matched_text": "password='{password}'"
+        }
+      },
+      {
+        "id": "AST_PICKLE_LOADS_28",
+        "vulnerability_type": "VulnerabilityType.SOFTWARE_DATA_INTEGRITY",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 6.5,
+        "cwe_id": "CWE-502",
+        "title": "Dangerous Function Call: Deserialization Attack",
+        "description": "Use of pickle.loads() can lead to security vulnerabilities",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 28,
+          "column": 11,
+          "function": "pickle.loads"
+        },
+        "code_snippet": "Line 28: [AST node analysis]",
+        "impact": "Potential deserialization attack vulnerability",
+        "mitigation": [
+          "Avoid using pickle.loads()",
+          "Use safer alternatives",
+          "Validate and sanitize all inputs",
+          "Implement proper input validation"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/502.html",
+          "https://owasp.org/www-project-top-ten/"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "function_name": "pickle.loads",
+          "arguments": {
+            "arg_count": 1,
+            "has_user_input": false,
+            "has_variables": true,
+            "has_constants": false
+          },
+          "ast_node_type": "Call"
+        }
+      },
+      {
+        "id": "SEM_CRYPTO_ddc9db01_42",
+        "vulnerability_type": "VulnerabilityType.CRYPTOGRAPHIC_FAILURES",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 5.0,
+        "cwe_id": "CWE-327",
+        "title": "Cryptographic Vulnerability: SSL Verification Disabled",
+        "description": "Weak cryptographic practice detected: SSL Verification Disabled",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 42,
+          "column": 14
+        },
+        "code_snippet": "ssl_verify = False",
+        "impact": "Data compromise, authentication bypass, man-in-the-middle attacks",
+        "mitigation": [
+          "Use strong cryptographic algorithms (AES, SHA-256+)",
+          "Use cryptographically secure random number generators",
+          "Always verify SSL/TLS certificates",
+          "Keep cryptographic libraries updated"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/327.html",
+          "https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "MEDIUM",
+        "detection_method": "SEMANTIC_PATTERN_ANALYSIS",
+        "metadata": {
+          "pattern": "(?i)ssl_verify\\s*=\\s*False",
+          "matched_text": "ssl_verify = False"
+        }
+      },
+      {
+        "id": "SEM_CRYPTO_4678f352_42",
+        "vulnerability_type": "VulnerabilityType.CRYPTOGRAPHIC_FAILURES",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 5.0,
+        "cwe_id": "CWE-327",
+        "title": "Cryptographic Vulnerability: Certificate Verification Disabled",
+        "description": "Weak cryptographic practice detected: Certificate Verification Disabled",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 42,
+          "column": 18
+        },
+        "code_snippet": "verify = False",
+        "impact": "Data compromise, authentication bypass, man-in-the-middle attacks",
+        "mitigation": [
+          "Use strong cryptographic algorithms (AES, SHA-256+)",
+          "Use cryptographically secure random number generators",
+          "Always verify SSL/TLS certificates",
+          "Keep cryptographic libraries updated"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/327.html",
+          "https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure"
+        ],
+        "confidence": 0.9,
+        "false_positive_likelihood": 0.1,
+        "exploitability": "MEDIUM",
+        "detection_method": "SEMANTIC_PATTERN_ANALYSIS",
+        "metadata": {
+          "pattern": "(?i)verify\\s*=\\s*False",
+          "matched_text": "verify = False"
+        }
+      },
+      {
+        "id": "AST_IMPORT_SUBPROCESS_2",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 5.0,
+        "cwe_id": "CWE-78",
+        "title": "Potentially Dangerous Import: Command Injection Risk",
+        "description": "Import of subprocess module requires careful security review",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 2,
+          "column": 0,
+          "module": "subprocess"
+        },
+        "code_snippet": "Line 2: [AST node analysis]",
+        "impact": "Potential security risk from subprocess usage",
+        "mitigation": [
+          "Review all uses of subprocess module",
+          "Implement proper input validation",
+          "Consider safer alternatives",
+          "Add security controls around dangerous functions"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/78.html"
+        ],
+        "confidence": 0.6,
+        "false_positive_likelihood": 0.4,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "module_name": "subprocess",
+          "import_type": "Import"
+        }
+      },
+      {
+        "id": "AST_IMPORT_PICKLE_4",
+        "vulnerability_type": "VulnerabilityType.SOFTWARE_DATA_INTEGRITY",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 5.0,
+        "cwe_id": "CWE-502",
+        "title": "Potentially Dangerous Import: Unsafe Deserialization",
+        "description": "Import of pickle module requires careful security review",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 4,
+          "column": 0,
+          "module": "pickle"
+        },
+        "code_snippet": "Line 4: [AST node analysis]",
+        "impact": "Potential security risk from pickle usage",
+        "mitigation": [
+          "Review all uses of pickle module",
+          "Implement proper input validation",
+          "Consider safer alternatives",
+          "Add security controls around dangerous functions"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/502.html"
+        ],
+        "confidence": 0.6,
+        "false_positive_likelihood": 0.4,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "module_name": "pickle",
+          "import_type": "Import"
+        }
+      },
+      {
+        "id": "AST_IMPORT_OS_5",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 5.0,
+        "cwe_id": "CWE-78",
+        "title": "Potentially Dangerous Import: System Command Risk",
+        "description": "Import of os module requires careful security review",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 5,
+          "column": 0,
+          "module": "os"
+        },
+        "code_snippet": "Line 5: [AST node analysis]",
+        "impact": "Potential security risk from os usage",
+        "mitigation": [
+          "Review all uses of os module",
+          "Implement proper input validation",
+          "Consider safer alternatives",
+          "Add security controls around dangerous functions"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/78.html"
+        ],
+        "confidence": 0.6,
+        "false_positive_likelihood": 0.4,
+        "exploitability": "MEDIUM",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "module_name": "os",
+          "import_type": "Import"
+        }
+      },
+      {
+        "id": "AST_SQL_INJECTION_RISK_18",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 6.0,
+        "cwe_id": "CWE-89",
+        "title": "Potential SQL Injection via F-String",
+        "description": "F-string with variable interpolation may be vulnerable to SQL injection",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 18,
+          "column": 12
+        },
+        "code_snippet": "Line 18: [AST node analysis]",
+        "impact": "Potential SQL injection vulnerability",
+        "mitigation": [
+          "Use parameterized queries",
+          "Implement input validation and sanitization",
+          "Use ORM query builders",
+          "Avoid string concatenation for SQL queries"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/89.html",
+          "https://owasp.org/www-community/attacks/SQL_Injection"
+        ],
+        "confidence": 0.5,
+        "false_positive_likelihood": 0.6,
+        "exploitability": "HIGH",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "string_type": "f-string",
+          "has_variables": true
+        }
+      },
+      {
+        "id": "AST_SQL_INJECTION_RISK_21",
+        "vulnerability_type": "VulnerabilityType.INJECTION",
+        "severity": "SeverityLevel.MEDIUM",
+        "cvss_score": 6.0,
+        "cwe_id": "CWE-89",
+        "title": "Potential SQL Injection via F-String",
+        "description": "F-string with variable interpolation may be vulnerable to SQL injection",
+        "location": {
+          "file": "test_vulnerable.py",
+          "line": 21,
+          "column": 14
+        },
+        "code_snippet": "Line 21: [AST node analysis]",
+        "impact": "Potential SQL injection vulnerability",
+        "mitigation": [
+          "Use parameterized queries",
+          "Implement input validation and sanitization",
+          "Use ORM query builders",
+          "Avoid string concatenation for SQL queries"
+        ],
+        "references": [
+          "https://cwe.mitre.org/data/definitions/89.html",
+          "https://owasp.org/www-community/attacks/SQL_Injection"
+        ],
+        "confidence": 0.5,
+        "false_positive_likelihood": 0.6,
+        "exploitability": "HIGH",
+        "detection_method": "AST_STATIC_ANALYSIS",
+        "metadata": {
+          "string_type": "f-string",
+          "has_variables": true
+        }
+      }
+    ],
+    "risk_score": 54.53,
+    "compliance_status": {
+      "OWASP_TOP_10": [
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_OS_SYSTEM_21",
+          "severity": "HIGH"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_SUBPROCESS_CALL_22",
+          "severity": "HIGH"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_EVAL_36",
+          "severity": "HIGH"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_EXEC_37",
+          "severity": "HIGH"
+        },
+        {
+          "category": "A02:2021-Cryptographic Failures",
+          "vulnerability_id": "SEM_CRYPTO_b20d4e37_32",
+          "severity": "HIGH"
+        },
+        {
+          "category": "A02:2021-Cryptographic Failures",
+          "vulnerability_id": "SEM_CRYPTO_ddc9db01_42",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "A02:2021-Cryptographic Failures",
+          "vulnerability_id": "SEM_CRYPTO_4678f352_42",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_IMPORT_SUBPROCESS_2",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_IMPORT_OS_5",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_SQL_INJECTION_RISK_18",
+          "severity": "MEDIUM"
+        },
+        {
+          "category": "A03:2021-Injection",
+          "vulnerability_id": "AST_SQL_INJECTION_RISK_21",
+          "severity": "MEDIUM"
+        }
+      ],
+      "CWE_TOP_25": [],
+      "PCI_DSS": [],
+      "SOC2": []
+    },
+    "recommendations": [
+      "High Priority: Remediate 11 high-severity vulnerabilities",
+      "Implement secure credential management system",
+      "Implement input validation and parameterized queries",
+      "Update cryptographic implementations to use strong algorithms",
+      "Integrate security scanning into CI/CD pipeline",
+      "Conduct regular security code reviews",
+      "Implement security training for development team",
+      "Establish security testing procedures"
+    ]
+  },
+  "dependency_analysis": {
+    "scan_id": "DEP_1757510341",
+    "timestamp": "2025-09-10T13:19:01.347635",
+    "filename": "requirements.txt",
+    "scan_time": 5.32245,
+    "dependencies_found": 7,
+    "dependencies_scanned": 7,
+    "vulnerabilities": [
+      {
+        "package": {
+          "name": "flask",
+          "version": "3.1.2",
+          "latest_version": "3.1.2",
+          "ecosystem": "pypi",
+          "description": "A simple framework for building complex web applications.",
+          "maintainers": [],
+          "download_count": null,
+          "last_updated": "2025-08-19 21:03:21",
+          "license": null,
+          "homepage": null,
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.MALICIOUS_PACKAGE",
+        "severity": "MEDIUM",
+        "cvss_score": 5.0,
+        "title": "Suspicious Package Characteristics",
+        "description": "Package exhibits suspicious characteristics: Very new package (less than 30 days old), No maintainer information available",
+        "impact": "Potential supply chain security risk",
+        "remediation": [
+          "Review package source code",
+          "Verify package legitimacy",
+          "Consider alternative packages",
+          "Monitor package behavior"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.6,
+        "metadata": {
+          "suspicious_indicators": [
+            "Very new package (less than 30 days old)",
+            "No maintainer information available"
+          ]
+        }
+      },
+      {
+        "package": {
+          "name": "urllib3",
+          "version": "2.5.0",
+          "latest_version": "2.5.0",
+          "ecosystem": "pypi",
+          "description": "HTTP library with thread-safe connection pooling, file post, and more.",
+          "maintainers": [],
+          "download_count": null,
+          "last_updated": "2025-06-18 14:07:41",
+          "license": null,
+          "homepage": null,
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.MALICIOUS_PACKAGE",
+        "severity": "MEDIUM",
+        "cvss_score": 5.0,
+        "title": "Suspicious Package Characteristics",
+        "description": "Package exhibits suspicious characteristics: No maintainer information available",
+        "impact": "Potential supply chain security risk",
+        "remediation": [
+          "Review package source code",
+          "Verify package legitimacy",
+          "Consider alternative packages",
+          "Monitor package behavior"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.6,
+        "metadata": {
+          "suspicious_indicators": [
+            "No maintainer information available"
+          ]
+        }
+      },
+      {
+        "package": {
+          "name": "requests",
+          "version": "2.32.5",
+          "latest_version": "2.32.5",
+          "ecosystem": "pypi",
+          "description": "Python HTTP for Humans.",
+          "maintainers": [
+            "Kenneth Reitz"
+          ],
+          "download_count": null,
+          "last_updated": "2025-08-18 20:46:02",
+          "license": "Apache-2.0",
+          "homepage": "https://requests.readthedocs.io",
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.MALICIOUS_PACKAGE",
+        "severity": "MEDIUM",
+        "cvss_score": 5.0,
+        "title": "Suspicious Package Characteristics",
+        "description": "Package exhibits suspicious characteristics: Very new package (less than 30 days old)",
+        "impact": "Potential supply chain security risk",
+        "remediation": [
+          "Review package source code",
+          "Verify package legitimacy",
+          "Consider alternative packages",
+          "Monitor package behavior"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.6,
+        "metadata": {
+          "suspicious_indicators": [
+            "Very new package (less than 30 days old)"
+          ]
+        }
+      },
+      {
+        "package": {
+          "name": "numpy",
+          "version": "2.3.3",
+          "latest_version": "2.3.3",
+          "ecosystem": "pypi",
+          "description": "Fundamental package for array computing in Python",
+          "maintainers": [
+            "Travis E. Oliphant et al."
+          ],
+          "download_count": null,
+          "last_updated": "2025-09-09 16:54:12",
+          "license": "Copyright (c) 2005-2025, NumPy Developers.\n         All rights reserved.\n         \n         Redistribution and use in source and binary forms, with or without\n         modification, are permitted provided that the following conditions are\n         met:\n         \n             * Redistributions of source code must retain the above copyright\n                notice, this list of conditions and the following disclaimer.\n         \n             * Redistributions in binary form must reproduce the above\n                copyright notice, this list of conditions and the following\n                disclaimer in the documentation and/or other materials provided\n                with the distribution.\n         \n             * Neither the name of the NumPy Developers nor the names of any\n                contributors may be used to endorse or promote products derived\n                from this software without specific prior written permission.\n         \n         THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n         \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n         LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n         A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n         OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n         SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n         LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n         DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n         THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         ----\n         \n         The NumPy repository and source distributions bundle several libraries that are\n         compatibly licensed.  We list these here.\n         \n         Name: lapack-lite\n         Files: numpy/linalg/lapack_lite/*\n         License: BSD-3-Clause\n           For details, see numpy/linalg/lapack_lite/LICENSE.txt\n         \n         Name: dragon4\n         Files: numpy/_core/src/multiarray/dragon4.c\n         License: MIT\n           For license text, see numpy/_core/src/multiarray/dragon4.c\n         \n         Name: libdivide\n         Files: numpy/_core/include/numpy/libdivide/*\n         License: Zlib\n           For license text, see numpy/_core/include/numpy/libdivide/LICENSE.txt\n         \n         \n         Note that the following files are vendored in the repository and sdist but not\n         installed in built numpy packages:\n         \n         Name: Meson\n         Files: vendored-meson/meson/*\n         License: Apache 2.0\n           For license text, see vendored-meson/meson/COPYING\n         \n         Name: spin\n         Files: .spin/cmds.py\n         License: BSD-3\n           For license text, see .spin/LICENSE\n         \n         Name: tempita\n         Files: numpy/_build_utils/tempita/*\n         License: MIT\n           For details, see numpy/_build_utils/tempita/LICENCE.txt\n         \n         ----\n         \n         This binary distribution of NumPy also bundles the following software:\n         \n         \n         Name: OpenBLAS\n         Files: numpy/.dylibs/libscipy_openblas*.so\n         Description: bundled as a dynamically linked library\n         Availability: https://github.com/OpenMathLib/OpenBLAS/\n         License: BSD-3-Clause\n           Copyright (c) 2011-2014, The OpenBLAS Project\n           All rights reserved.\n         \n           Redistribution and use in source and binary forms, with or without\n           modification, are permitted provided that the following conditions are\n           met:\n         \n              1. Redistributions of source code must retain the above copyright\n                 notice, this list of conditions and the following disclaimer.\n         \n              2. Redistributions in binary form must reproduce the above copyright\n                 notice, this list of conditions and the following disclaimer in\n                 the documentation and/or other materials provided with the\n                 distribution.\n              3. Neither the name of the OpenBLAS project nor the names of\n                 its contributors may be used to endorse or promote products\n                 derived from this software without specific prior written\n                 permission.\n         \n           THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\n           AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n           IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n           ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\n           LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n           DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\n           SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n           CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\n           OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE\n           USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         \n         Name: LAPACK\n         Files: numpy/.dylibs/libscipy_openblas*.so\n         Description: bundled in OpenBLAS\n         Availability: https://github.com/OpenMathLib/OpenBLAS/\n         License: BSD-3-Clause-Open-MPI\n           Copyright (c) 1992-2013 The University of Tennessee and The University\n                                   of Tennessee Research Foundation.  All rights\n                                   reserved.\n           Copyright (c) 2000-2013 The University of California Berkeley. All\n                                   rights reserved.\n           Copyright (c) 2006-2013 The University of Colorado Denver.  All rights\n                                   reserved.\n         \n           $COPYRIGHT$\n         \n           Additional copyrights may follow\n         \n           $HEADER$\n         \n           Redistribution and use in source and binary forms, with or without\n           modification, are permitted provided that the following conditions are\n           met:\n         \n           - Redistributions of source code must retain the above copyright\n             notice, this list of conditions and the following disclaimer.\n         \n           - Redistributions in binary form must reproduce the above copyright\n             notice, this list of conditions and the following disclaimer listed\n             in this license in the documentation and/or other materials\n             provided with the distribution.\n         \n           - Neither the name of the copyright holders nor the names of its\n             contributors may be used to endorse or promote products derived from\n             this software without specific prior written permission.\n         \n           The copyright holders provide no reassurances that the source code\n           provided does not infringe any patent, copyright, or any other\n           intellectual property rights of third parties.  The copyright holders\n           disclaim any liability to any recipient for claims brought against\n           recipient by any third party for infringement of that parties\n           intellectual property rights.\n         \n           THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n           \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n           LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n           A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\n           OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n           SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\n           LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n           DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n           THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n           (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n           OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n         \n         \n         Name: GCC runtime library\n         Files: numpy/.dylibs/libgfortran*, numpy/.dylibs/libgcc*\n         Description: dynamically linked to files compiled with gcc\n         Availability: https://gcc.gnu.org/git/?p=gcc.git;a=tree;f=libgfortran\n         License: GPL-3.0-or-later WITH GCC-exception-3.1\n           Copyright (C) 2002-2017 Free Software Foundation, Inc.\n         \n           Libgfortran is free software; you can redistribute it and/or modify\n           it under the terms of the GNU General Public License as published by\n           the Free Software Foundation; either version 3, or (at your option)\n           any later version.\n         \n           Libgfortran is distributed in the hope that it will be useful,\n           but WITHOUT ANY WARRANTY; without even the implied warranty of\n           MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n           GNU General Public License for more details.\n         \n           Under Section 7 of GPL version 3, you are granted additional\n           permissions described in the GCC Runtime Library Exception, version\n           3.1, as published by the Free Software Foundation.\n         \n           You should have received a copy of the GNU General Public License and\n           a copy of the GCC Runtime Library Exception along with this program;\n           see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see\n           <http://www.gnu.org/licenses/>.\n         \n         ----\n         \n         Full text of license texts referred to above follows (that they are\n         listed below does not necessarily imply the conditions apply to the\n         present binary release):\n         \n         ----\n         \n         GCC RUNTIME LIBRARY EXCEPTION\n         \n         Version 3.1, 31 March 2009\n         \n         Copyright (C) 2009 Free Software Foundation, Inc. <https://fsf.org/>\n         \n         Everyone is permitted to copy and distribute verbatim copies of this\n         license document, but changing it is not allowed.\n         \n         This GCC Runtime Library Exception (\"Exception\") is an additional\n         permission under section 7 of the GNU General Public License, version\n         3 (\"GPLv3\"). It applies to a given file (the \"Runtime Library\") that\n         bears a notice placed by the copyright holder of the file stating that\n         the file is governed by GPLv3 along with this Exception.\n         \n         When you use GCC to compile a program, GCC may combine portions of\n         certain GCC header files and runtime libraries with the compiled\n         program. The purpose of this Exception is to allow compilation of\n         non-GPL (including proprietary) programs to use, in this way, the\n         header files and runtime libraries covered by this Exception.\n         \n         0. Definitions.\n         \n         A file is an \"Independent Module\" if it either requires the Runtime\n         Library for execution after a Compilation Process, or makes use of an\n         interface provided by the Runtime Library, but is not otherwise based\n         on the Runtime Library.\n         \n         \"GCC\" means a version of the GNU Compiler Collection, with or without\n         modifications, governed by version 3 (or a specified later version) of\n         the GNU General Public License (GPL) with the option of using any\n         subsequent versions published by the FSF.\n         \n         \"GPL-compatible Software\" is software whose conditions of propagation,\n         modification and use would permit combination with GCC in accord with\n         the license of GCC.\n         \n         \"Target Code\" refers to output from any compiler for a real or virtual\n         target processor architecture, in executable form or suitable for\n         input to an assembler, loader, linker and/or execution\n         phase. Notwithstanding that, Target Code does not include data in any\n         format that is used as a compiler intermediate representation, or used\n         for producing a compiler intermediate representation.\n         \n         The \"Compilation Process\" transforms code entirely represented in\n         non-intermediate languages designed for human-written code, and/or in\n         Java Virtual Machine byte code, into Target Code. Thus, for example,\n         use of source code generators and preprocessors need not be considered\n         part of the Compilation Process, since the Compilation Process can be\n         understood as starting with the output of the generators or\n         preprocessors.\n         \n         A Compilation Process is \"Eligible\" if it is done using GCC, alone or\n         with other GPL-compatible software, or if it is done without using any\n         work based on GCC. For example, using non-GPL-compatible Software to\n         optimize any GCC intermediate representations would not qualify as an\n         Eligible Compilation Process.\n         \n         1. Grant of Additional Permission.\n         \n         You have permission to propagate a work of Target Code formed by\n         combining the Runtime Library with Independent Modules, even if such\n         propagation would otherwise violate the terms of GPLv3, provided that\n         all Target Code was generated by Eligible Compilation Processes. You\n         may then convey such a combination under terms of your choice,\n         consistent with the licensing of the Independent Modules.\n         \n         2. No Weakening of GCC Copyleft.\n         \n         The availability of this Exception does not imply any general\n         presumption that third-party software is unaffected by the copyleft\n         requirements of the license of GCC.\n         \n         ----\n         \n                             GNU GENERAL PUBLIC LICENSE\n                                Version 3, 29 June 2007\n         \n          Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>\n          Everyone is permitted to copy and distribute verbatim copies\n          of this license document, but changing it is not allowed.\n         \n                                     Preamble\n         \n           The GNU General Public License is a free, copyleft license for\n         software and other kinds of works.\n         \n           The licenses for most software and other practical works are designed\n         to take away your freedom to share and change the works.  By contrast,\n         the GNU General Public License is intended to guarantee your freedom to\n         share and change all versions of a program--to make sure it remains free\n         software for all its users.  We, the Free Software Foundation, use the\n         GNU General Public License for most of our software; it applies also to\n         any other work released this way by its authors.  You can apply it to\n         your programs, too.\n         \n           When we speak of free software, we are referring to freedom, not\n         price.  Our General Public Licenses are designed to make sure that you\n         have the freedom to distribute copies of free software (and charge for\n         them if you wish), that you receive source code or can get it if you\n         want it, that you can change the software or use pieces of it in new\n         free programs, and that you know you can do these things.\n         \n           To protect your rights, we need to prevent others from denying you\n         these rights or asking you to surrender the rights.  Therefore, you have\n         certain responsibilities if you distribute copies of the software, or if\n         you modify it: responsibilities to respect the freedom of others.\n         \n           For example, if you distribute copies of such a program, whether\n         gratis or for a fee, you must pass on to the recipients the same\n         freedoms that you received.  You must make sure that they, too, receive\n         or can get the source code.  And you must show them these terms so they\n         know their rights.\n         \n           Developers that use the GNU GPL protect your rights with two steps:\n         (1) assert copyright on the software, and (2) offer you this License\n         giving you legal permission to copy, distribute and/or modify it.\n         \n           For the developers' and authors' protection, the GPL clearly explains\n         that there is no warranty for this free software.  For both users' and\n         authors' sake, the GPL requires that modified versions be marked as\n         changed, so that their problems will not be attributed erroneously to\n         authors of previous versions.\n         \n           Some devices are designed to deny users access to install or run\n         modified versions of the software inside them, although the manufacturer\n         can do so.  This is fundamentally incompatible with the aim of\n         protecting users' freedom to change the software.  The systematic\n         pattern of such abuse occurs in the area of products for individuals to\n         use, which is precisely where it is most unacceptable.  Therefore, we\n         have designed this version of the GPL to prohibit the practice for those\n         products.  If such problems arise substantially in other domains, we\n         stand ready to extend this provision to those domains in future versions\n         of the GPL, as needed to protect the freedom of users.\n         \n           Finally, every program is threatened constantly by software patents.\n         States should not allow patents to restrict development and use of\n         software on general-purpose computers, but in those that do, we wish to\n         avoid the special danger that patents applied to a free program could\n         make it effectively proprietary.  To prevent this, the GPL assures that\n         patents cannot be used to render the program non-free.\n         \n           The precise terms and conditions for copying, distribution and\n         modification follow.\n         \n                                TERMS AND CONDITIONS\n         \n           0. Definitions.\n         \n           \"This License\" refers to version 3 of the GNU General Public License.\n         \n           \"Copyright\" also means copyright-like laws that apply to other kinds of\n         works, such as semiconductor masks.\n         \n           \"The Program\" refers to any copyrightable work licensed under this\n         License.  Each licensee is addressed as \"you\".  \"Licensees\" and\n         \"recipients\" may be individuals or organizations.\n         \n           To \"modify\" a work means to copy from or adapt all or part of the work\n         in a fashion requiring copyright permission, other than the making of an\n         exact copy.  The resulting work is called a \"modified version\" of the\n         earlier work or a work \"based on\" the earlier work.\n         \n           A \"covered work\" means either the unmodified Program or a work based\n         on the Program.\n         \n           To \"propagate\" a work means to do anything with it that, without\n         permission, would make you directly or secondarily liable for\n         infringement under applicable copyright law, except executing it on a\n         computer or modifying a private copy.  Propagation includes copying,\n         distribution (with or without modification), making available to the\n         public, and in some countries other activities as well.\n         \n           To \"convey\" a work means any kind of propagation that enables other\n         parties to make or receive copies.  Mere interaction with a user through\n         a computer network, with no transfer of a copy, is not conveying.\n         \n           An interactive user interface displays \"Appropriate Legal Notices\"\n         to the extent that it includes a convenient and prominently visible\n         feature that (1) displays an appropriate copyright notice, and (2)\n         tells the user that there is no warranty for the work (except to the\n         extent that warranties are provided), that licensees may convey the\n         work under this License, and how to view a copy of this License.  If\n         the interface presents a list of user commands or options, such as a\n         menu, a prominent item in the list meets this criterion.\n         \n           1. Source Code.\n         \n           The \"source code\" for a work means the preferred form of the work\n         for making modifications to it.  \"Object code\" means any non-source\n         form of a work.\n         \n           A \"Standard Interface\" means an interface that either is an official\n         standard defined by a recognized standards body, or, in the case of\n         interfaces specified for a particular programming language, one that\n         is widely used among developers working in that language.\n         \n           The \"System Libraries\" of an executable work include anything, other\n         than the work as a whole, that (a) is included in the normal form of\n         packaging a Major Component, but which is not part of that Major\n         Component, and (b) serves only to enable use of the work with that\n         Major Component, or to implement a Standard Interface for which an\n         implementation is available to the public in source code form.  A\n         \"Major Component\", in this context, means a major essential component\n         (kernel, window system, and so on) of the specific operating system\n         (if any) on which the executable work runs, or a compiler used to\n         produce the work, or an object code interpreter used to run it.\n         \n           The \"Corresponding Source\" for a work in object code form means all\n         the source code needed to generate, install, and (for an executable\n         work) run the object code and to modify the work, including scripts to\n         control those activities.  However, it does not include the work's\n         System Libraries, or general-purpose tools or generally available free\n         programs which are used unmodified in performing those activities but\n         which are not part of the work.  For example, Corresponding Source\n         includes interface definition files associated with source files for\n         the work, and the source code for shared libraries and dynamically\n         linked subprograms that the work is specifically designed to require,\n         such as by intimate data communication or control flow between those\n         subprograms and other parts of the work.\n         \n           The Corresponding Source need not include anything that users\n         can regenerate automatically from other parts of the Corresponding\n         Source.\n         \n           The Corresponding Source for a work in source code form is that\n         same work.\n         \n           2. Basic Permissions.\n         \n           All rights granted under this License are granted for the term of\n         copyright on the Program, and are irrevocable provided the stated\n         conditions are met.  This License explicitly affirms your unlimited\n         permission to run the unmodified Program.  The output from running a\n         covered work is covered by this License only if the output, given its\n         content, constitutes a covered work.  This License acknowledges your\n         rights of fair use or other equivalent, as provided by copyright law.\n         \n           You may make, run and propagate covered works that you do not\n         convey, without conditions so long as your license otherwise remains\n         in force.  You may convey covered works to others for the sole purpose\n         of having them make modifications exclusively for you, or provide you\n         with facilities for running those works, provided that you comply with\n         the terms of this License in conveying all material for which you do\n         not control copyright.  Those thus making or running the covered works\n         for you must do so exclusively on your behalf, under your direction\n         and control, on terms that prohibit them from making any copies of\n         your copyrighted material outside their relationship with you.\n         \n           Conveying under any other circumstances is permitted solely under\n         the conditions stated below.  Sublicensing is not allowed; section 10\n         makes it unnecessary.\n         \n           3. Protecting Users' Legal Rights From Anti-Circumvention Law.\n         \n           No covered work shall be deemed part of an effective technological\n         measure under any applicable law fulfilling obligations under article\n         11 of the WIPO copyright treaty adopted on 20 December 1996, or\n         similar laws prohibiting or restricting circumvention of such\n         measures.\n         \n           When you convey a covered work, you waive any legal power to forbid\n         circumvention of technological measures to the extent such circumvention\n         is effected by exercising rights under this License with respect to\n         the covered work, and you disclaim any intention to limit operation or\n         modification of the work as a means of enforcing, against the work's\n         users, your or third parties' legal rights to forbid circumvention of\n         technological measures.\n         \n           4. Conveying Verbatim Copies.\n         \n           You may convey verbatim copies of the Program's source code as you\n         receive it, in any medium, provided that you conspicuously and\n         appropriately publish on each copy an appropriate copyright notice;\n         keep intact all notices stating that this License and any\n         non-permissive terms added in accord with section 7 apply to the code;\n         keep intact all notices of the absence of any warranty; and give all\n         recipients a copy of this License along with the Program.\n         \n           You may charge any price or no price for each copy that you convey,\n         and you may offer support or warranty protection for a fee.\n         \n           5. Conveying Modified Source Versions.\n         \n           You may convey a work based on the Program, or the modifications to\n         produce it from the Program, in the form of source code under the\n         terms of section 4, provided that you also meet all of these conditions:\n         \n             a) The work must carry prominent notices stating that you modified\n             it, and giving a relevant date.\n         \n             b) The work must carry prominent notices stating that it is\n             released under this License and any conditions added under section\n             7.  This requirement modifies the requirement in section 4 to\n             \"keep intact all notices\".\n         \n             c) You must license the entire work, as a whole, under this\n             License to anyone who comes into possession of a copy.  This\n             License will therefore apply, along with any applicable section 7\n             additional terms, to the whole of the work, and all its parts,\n             regardless of how they are packaged.  This License gives no\n             permission to license the work in any other way, but it does not\n             invalidate such permission if you have separately received it.\n         \n             d) If the work has interactive user interfaces, each must display\n             Appropriate Legal Notices; however, if the Program has interactive\n             interfaces that do not display Appropriate Legal Notices, your\n             work need not make them do so.\n         \n           A compilation of a covered work with other separate and independent\n         works, which are not by their nature extensions of the covered work,\n         and which are not combined with it such as to form a larger program,\n         in or on a volume of a storage or distribution medium, is called an\n         \"aggregate\" if the compilation and its resulting copyright are not\n         used to limit the access or legal rights of the compilation's users\n         beyond what the individual works permit.  Inclusion of a covered work\n         in an aggregate does not cause this License to apply to the other\n         parts of the aggregate.\n         \n           6. Conveying Non-Source Forms.\n         \n           You may convey a covered work in object code form under the terms\n         of sections 4 and 5, provided that you also convey the\n         machine-readable Corresponding Source under the terms of this License,\n         in one of these ways:\n         \n             a) Convey the object code in, or embodied in, a physical product\n             (including a physical distribution medium), accompanied by the\n             Corresponding Source fixed on a durable physical medium\n             customarily used for software interchange.\n         \n             b) Convey the object code in, or embodied in, a physical product\n             (including a physical distribution medium), accompanied by a\n             written offer, valid for at least three years and valid for as\n             long as you offer spare parts or customer support for that product\n             model, to give anyone who possesses the object code either (1) a\n             copy of the Corresponding Source for all the software in the\n             product that is covered by this License, on a durable physical\n             medium customarily used for software interchange, for a price no\n             more than your reasonable cost of physically performing this\n             conveying of source, or (2) access to copy the\n             Corresponding Source from a network server at no charge.\n         \n             c) Convey individual copies of the object code with a copy of the\n             written offer to provide the Corresponding Source.  This\n             alternative is allowed only occasionally and noncommercially, and\n             only if you received the object code with such an offer, in accord\n             with subsection 6b.\n         \n             d) Convey the object code by offering access from a designated\n             place (gratis or for a charge), and offer equivalent access to the\n             Corresponding Source in the same way through the same place at no\n             further charge.  You need not require recipients to copy the\n             Corresponding Source along with the object code.  If the place to\n             copy the object code is a network server, the Corresponding Source\n             may be on a different server (operated by you or a third party)\n             that supports equivalent copying facilities, provided you maintain\n             clear directions next to the object code saying where to find the\n             Corresponding Source.  Regardless of what server hosts the\n             Corresponding Source, you remain obligated to ensure that it is\n             available for as long as needed to satisfy these requirements.\n         \n             e) Convey the object code using peer-to-peer transmission, provided\n             you inform other peers where the object code and Corresponding\n             Source of the work are being offered to the general public at no\n             charge under subsection 6d.\n         \n           A separable portion of the object code, whose source code is excluded\n         from the Corresponding Source as a System Library, need not be\n         included in conveying the object code work.\n         \n           A \"User Product\" is either (1) a \"consumer product\", which means any\n         tangible personal property which is normally used for personal, family,\n         or household purposes, or (2) anything designed or sold for incorporation\n         into a dwelling.  In determining whether a product is a consumer product,\n         doubtful cases shall be resolved in favor of coverage.  For a particular\n         product received by a particular user, \"normally used\" refers to a\n         typical or common use of that class of product, regardless of the status\n         of the particular user or of the way in which the particular user\n         actually uses, or expects or is expected to use, the product.  A product\n         is a consumer product regardless of whether the product has substantial\n         commercial, industrial or non-consumer uses, unless such uses represent\n         the only significant mode of use of the product.\n         \n           \"Installation Information\" for a User Product means any methods,\n         procedures, authorization keys, or other information required to install\n         and execute modified versions of a covered work in that User Product from\n         a modified version of its Corresponding Source.  The information must\n         suffice to ensure that the continued functioning of the modified object\n         code is in no case prevented or interfered with solely because\n         modification has been made.\n         \n           If you convey an object code work under this section in, or with, or\n         specifically for use in, a User Product, and the conveying occurs as\n         part of a transaction in which the right of possession and use of the\n         User Product is transferred to the recipient in perpetuity or for a\n         fixed term (regardless of how the transaction is characterized), the\n         Corresponding Source conveyed under this section must be accompanied\n         by the Installation Information.  But this requirement does not apply\n         if neither you nor any third party retains the ability to install\n         modified object code on the User Product (for example, the work has\n         been installed in ROM).\n         \n           The requirement to provide Installation Information does not include a\n         requirement to continue to provide support service, warranty, or updates\n         for a work that has been modified or installed by the recipient, or for\n         the User Product in which it has been modified or installed.  Access to a\n         network may be denied when the modification itself materially and\n         adversely affects the operation of the network or violates the rules and\n         protocols for communication across the network.\n         \n           Corresponding Source conveyed, and Installation Information provided,\n         in accord with this section must be in a format that is publicly\n         documented (and with an implementation available to the public in\n         source code form), and must require no special password or key for\n         unpacking, reading or copying.\n         \n           7. Additional Terms.\n         \n           \"Additional permissions\" are terms that supplement the terms of this\n         License by making exceptions from one or more of its conditions.\n         Additional permissions that are applicable to the entire Program shall\n         be treated as though they were included in this License, to the extent\n         that they are valid under applicable law.  If additional permissions\n         apply only to part of the Program, that part may be used separately\n         under those permissions, but the entire Program remains governed by\n         this License without regard to the additional permissions.\n         \n           When you convey a copy of a covered work, you may at your option\n         remove any additional permissions from that copy, or from any part of\n         it.  (Additional permissions may be written to require their own\n         removal in certain cases when you modify the work.)  You may place\n         additional permissions on material, added by you to a covered work,\n         for which you have or can give appropriate copyright permission.\n         \n           Notwithstanding any other provision of this License, for material you\n         add to a covered work, you may (if authorized by the copyright holders of\n         that material) supplement the terms of this License with terms:\n         \n             a) Disclaiming warranty or limiting liability differently from the\n             terms of sections 15 and 16 of this License; or\n         \n             b) Requiring preservation of specified reasonable legal notices or\n             author attributions in that material or in the Appropriate Legal\n             Notices displayed by works containing it; or\n         \n             c) Prohibiting misrepresentation of the origin of that material, or\n             requiring that modified versions of such material be marked in\n             reasonable ways as different from the original version; or\n         \n             d) Limiting the use for publicity purposes of names of licensors or\n             authors of the material; or\n         \n             e) Declining to grant rights under trademark law for use of some\n             trade names, trademarks, or service marks; or\n         \n             f) Requiring indemnification of licensors and authors of that\n             material by anyone who conveys the material (or modified versions of\n             it) with contractual assumptions of liability to the recipient, for\n             any liability that these contractual assumptions directly impose on\n             those licensors and authors.\n         \n           All other non-permissive additional terms are considered \"further\n         restrictions\" within the meaning of section 10.  If the Program as you\n         received it, or any part of it, contains a notice stating that it is\n         governed by this License along with a term that is a further\n         restriction, you may remove that term.  If a license document contains\n         a further restriction but permits relicensing or conveying under this\n         License, you may add to a covered work material governed by the terms\n         of that license document, provided that the further restriction does\n         not survive such relicensing or conveying.\n         \n           If you add terms to a covered work in accord with this section, you\n         must place, in the relevant source files, a statement of the\n         additional terms that apply to those files, or a notice indicating\n         where to find the applicable terms.\n         \n           Additional terms, permissive or non-permissive, may be stated in the\n         form of a separately written license, or stated as exceptions;\n         the above requirements apply either way.\n         \n           8. Termination.\n         \n           You may not propagate or modify a covered work except as expressly\n         provided under this License.  Any attempt otherwise to propagate or\n         modify it is void, and will automatically terminate your rights under\n         this License (including any patent licenses granted under the third\n         paragraph of section 11).\n         \n           However, if you cease all violation of this License, then your\n         license from a particular copyright holder is reinstated (a)\n         provisionally, unless and until the copyright holder explicitly and\n         finally terminates your license, and (b) permanently, if the copyright\n         holder fails to notify you of the violation by some reasonable means\n         prior to 60 days after the cessation.\n         \n           Moreover, your license from a particular copyright holder is\n         reinstated permanently if the copyright holder notifies you of the\n         violation by some reasonable means, this is the first time you have\n         received notice of violation of this License (for any work) from that\n         copyright holder, and you cure the violation prior to 30 days after\n         your receipt of the notice.\n         \n           Termination of your rights under this section does not terminate the\n         licenses of parties who have received copies or rights from you under\n         this License.  If your rights have been terminated and not permanently\n         reinstated, you do not qualify to receive new licenses for the same\n         material under section 10.\n         \n           9. Acceptance Not Required for Having Copies.\n         \n           You are not required to accept this License in order to receive or\n         run a copy of the Program.  Ancillary propagation of a covered work\n         occurring solely as a consequence of using peer-to-peer transmission\n         to receive a copy likewise does not require acceptance.  However,\n         nothing other than this License grants you permission to propagate or\n         modify any covered work.  These actions infringe copyright if you do\n         not accept this License.  Therefore, by modifying or propagating a\n         covered work, you indicate your acceptance of this License to do so.\n         \n           10. Automatic Licensing of Downstream Recipients.\n         \n           Each time you convey a covered work, the recipient automatically\n         receives a license from the original licensors, to run, modify and\n         propagate that work, subject to this License.  You are not responsible\n         for enforcing compliance by third parties with this License.\n         \n           An \"entity transaction\" is a transaction transferring control of an\n         organization, or substantially all assets of one, or subdividing an\n         organization, or merging organizations.  If propagation of a covered\n         work results from an entity transaction, each party to that\n         transaction who receives a copy of the work also receives whatever\n         licenses to the work the party's predecessor in interest had or could\n         give under the previous paragraph, plus a right to possession of the\n         Corresponding Source of the work from the predecessor in interest, if\n         the predecessor has it or can get it with reasonable efforts.\n         \n           You may not impose any further restrictions on the exercise of the\n         rights granted or affirmed under this License.  For example, you may\n         not impose a license fee, royalty, or other charge for exercise of\n         rights granted under this License, and you may not initiate litigation\n         (including a cross-claim or counterclaim in a lawsuit) alleging that\n         any patent claim is infringed by making, using, selling, offering for\n         sale, or importing the Program or any portion of it.\n         \n           11. Patents.\n         \n           A \"contributor\" is a copyright holder who authorizes use under this\n         License of the Program or a work on which the Program is based.  The\n         work thus licensed is called the contributor's \"contributor version\".\n         \n           A contributor's \"essential patent claims\" are all patent claims\n         owned or controlled by the contributor, whether already acquired or\n         hereafter acquired, that would be infringed by some manner, permitted\n         by this License, of making, using, or selling its contributor version,\n         but do not include claims that would be infringed only as a\n         consequence of further modification of the contributor version.  For\n         purposes of this definition, \"control\" includes the right to grant\n         patent sublicenses in a manner consistent with the requirements of\n         this License.\n         \n           Each contributor grants you a non-exclusive, worldwide, royalty-free\n         patent license under the contributor's essential patent claims, to\n         make, use, sell, offer for sale, import and otherwise run, modify and\n         propagate the contents of its contributor version.\n         \n           In the following three paragraphs, a \"patent license\" is any express\n         agreement or commitment, however denominated, not to enforce a patent\n         (such as an express permission to practice a patent or covenant not to\n         sue for patent infringement).  To \"grant\" such a patent license to a\n         party means to make such an agreement or commitment not to enforce a\n         patent against the party.\n         \n           If you convey a covered work, knowingly relying on a patent license,\n         and the Corresponding Source of the work is not available for anyone\n         to copy, free of charge and under the terms of this License, through a\n         publicly available network server or other readily accessible means,\n         then you must either (1) cause the Corresponding Source to be so\n         available, or (2) arrange to deprive yourself of the benefit of the\n         patent license for this particular work, or (3) arrange, in a manner\n         consistent with the requirements of this License, to extend the patent\n         license to downstream recipients.  \"Knowingly relying\" means you have\n         actual knowledge that, but for the patent license, your conveying the\n         covered work in a country, or your recipient's use of the covered work\n         in a country, would infringe one or more identifiable patents in that\n         country that you have reason to believe are valid.\n         \n           If, pursuant to or in connection with a single transaction or\n         arrangement, you convey, or propagate by procuring conveyance of, a\n         covered work, and grant a patent license to some of the parties\n         receiving the covered work authorizing them to use, propagate, modify\n         or convey a specific copy of the covered work, then the patent license\n         you grant is automatically extended to all recipients of the covered\n         work and works based on it.\n         \n           A patent license is \"discriminatory\" if it does not include within\n         the scope of its coverage, prohibits the exercise of, or is\n         conditioned on the non-exercise of one or more of the rights that are\n         specifically granted under this License.  You may not convey a covered\n         work if you are a party to an arrangement with a third party that is\n         in the business of distributing software, under which you make payment\n         to the third party based on the extent of your activity of conveying\n         the work, and under which the third party grants, to any of the\n         parties who would receive the covered work from you, a discriminatory\n         patent license (a) in connection with copies of the covered work\n         conveyed by you (or copies made from those copies), or (b) primarily\n         for and in connection with specific products or compilations that\n         contain the covered work, unless you entered into that arrangement,\n         or that patent license was granted, prior to 28 March 2007.\n         \n           Nothing in this License shall be construed as excluding or limiting\n         any implied license or other defenses to infringement that may\n         otherwise be available to you under applicable patent law.\n         \n           12. No Surrender of Others' Freedom.\n         \n           If conditions are imposed on you (whether by court order, agreement or\n         otherwise) that contradict the conditions of this License, they do not\n         excuse you from the conditions of this License.  If you cannot convey a\n         covered work so as to satisfy simultaneously your obligations under this\n         License and any other pertinent obligations, then as a consequence you may\n         not convey it at all.  For example, if you agree to terms that obligate you\n         to collect a royalty for further conveying from those to whom you convey\n         the Program, the only way you could satisfy both those terms and this\n         License would be to refrain entirely from conveying the Program.\n         \n           13. Use with the GNU Affero General Public License.\n         \n           Notwithstanding any other provision of this License, you have\n         permission to link or combine any covered work with a work licensed\n         under version 3 of the GNU Affero General Public License into a single\n         combined work, and to convey the resulting work.  The terms of this\n         License will continue to apply to the part which is the covered work,\n         but the special requirements of the GNU Affero General Public License,\n         section 13, concerning interaction through a network will apply to the\n         combination as such.\n         \n           14. Revised Versions of this License.\n         \n           The Free Software Foundation may publish revised and/or new versions of\n         the GNU General Public License from time to time.  Such new versions will\n         be similar in spirit to the present version, but may differ in detail to\n         address new problems or concerns.\n         \n           Each version is given a distinguishing version number.  If the\n         Program specifies that a certain numbered version of the GNU General\n         Public License \"or any later version\" applies to it, you have the\n         option of following the terms and conditions either of that numbered\n         version or of any later version published by the Free Software\n         Foundation.  If the Program does not specify a version number of the\n         GNU General Public License, you may choose any version ever published\n         by the Free Software Foundation.\n         \n           If the Program specifies that a proxy can decide which future\n         versions of the GNU General Public License can be used, that proxy's\n         public statement of acceptance of a version permanently authorizes you\n         to choose that version for the Program.\n         \n           Later license versions may give you additional or different\n         permissions.  However, no additional obligations are imposed on any\n         author or copyright holder as a result of your choosing to follow a\n         later version.\n         \n           15. Disclaimer of Warranty.\n         \n           THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY\n         APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT\n         HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY\n         OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,\n         THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR\n         PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM\n         IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF\n         ALL NECESSARY SERVICING, REPAIR OR CORRECTION.\n         \n           16. Limitation of Liability.\n         \n           IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING\n         WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS\n         THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY\n         GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE\n         USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF\n         DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD\n         PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),\n         EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF\n         SUCH DAMAGES.\n         \n           17. Interpretation of Sections 15 and 16.\n         \n           If the disclaimer of warranty and limitation of liability provided\n         above cannot be given local legal effect according to their terms,\n         reviewing courts shall apply local law that most closely approximates\n         an absolute waiver of all civil liability in connection with the\n         Program, unless a warranty or assumption of liability accompanies a\n         copy of the Program in return for a fee.\n         \n                              END OF TERMS AND CONDITIONS\n         \n                     How to Apply These Terms to Your New Programs\n         \n           If you develop a new program, and you want it to be of the greatest\n         possible use to the public, the best way to achieve this is to make it\n         free software which everyone can redistribute and change under these terms.\n         \n           To do so, attach the following notices to the program.  It is safest\n         to attach them to the start of each source file to most effectively\n         state the exclusion of warranty; and each file should have at least\n         the \"copyright\" line and a pointer to where the full notice is found.\n         \n             <one line to give the program's name and a brief idea of what it does.>\n             Copyright (C) <year>  <name of author>\n         \n             This program is free software: you can redistribute it and/or modify\n             it under the terms of the GNU General Public License as published by\n             the Free Software Foundation, either version 3 of the License, or\n             (at your option) any later version.\n         \n             This program is distributed in the hope that it will be useful,\n             but WITHOUT ANY WARRANTY; without even the implied warranty of\n             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n             GNU General Public License for more details.\n         \n             You should have received a copy of the GNU General Public License\n             along with this program.  If not, see <https://www.gnu.org/licenses/>.\n         \n         Also add information on how to contact you by electronic and paper mail.\n         \n           If the program does terminal interaction, make it output a short\n         notice like this when it starts in an interactive mode:\n         \n             <program>  Copyright (C) <year>  <name of author>\n             This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.\n             This is free software, and you are welcome to redistribute it\n             under certain conditions; type `show c' for details.\n         \n         The hypothetical commands `show w' and `show c' should show the appropriate\n         parts of the General Public License.  Of course, your program's commands\n         might be different; for a GUI interface, you would use an \"about box\".\n         \n           You should also get your employer (if you work as a programmer) or school,\n         if any, to sign a \"copyright disclaimer\" for the program, if necessary.\n         For more information on this, and how to apply and follow the GNU GPL, see\n         <https://www.gnu.org/licenses/>.\n         \n           The GNU General Public License does not permit incorporating your program\n         into proprietary programs.  If your program is a subroutine library, you\n         may consider it more useful to permit linking proprietary applications with\n         the library.  If this is what you want to do, use the GNU Lesser General\n         Public License instead of this License.  But first, please read\n         <https://www.gnu.org/licenses/why-not-lgpl.html>.\n         \n         Name: libquadmath\n         Files: numpy/.dylibs/libquadmath*.so\n         Description: dynamically linked to files compiled with gcc\n         Availability: https://gcc.gnu.org/git/?p=gcc.git;a=tree;f=libquadmath\n         License: LGPL-2.1-or-later\n         \n             GCC Quad-Precision Math Library\n             Copyright (C) 2010-2019 Free Software Foundation, Inc.\n             Written by Francois-Xavier Coudert  <fxcoudert@gcc.gnu.org>\n         \n             This file is part of the libquadmath library.\n             Libquadmath is free software; you can redistribute it and/or\n             modify it under the terms of the GNU Library General Public\n             License as published by the Free Software Foundation; either\n             version 2.1 of the License, or (at your option) any later version.\n         \n             Libquadmath is distributed in the hope that it will be useful,\n             but WITHOUT ANY WARRANTY; without even the implied warranty of\n             MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n             Lesser General Public License for more details.\n             https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html\n         ",
+          "homepage": null,
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.MALICIOUS_PACKAGE",
+        "severity": "MEDIUM",
+        "cvss_score": 5.0,
+        "title": "Suspicious Package Characteristics",
+        "description": "Package exhibits suspicious characteristics: Very new package (less than 30 days old)",
+        "impact": "Potential supply chain security risk",
+        "remediation": [
+          "Review package source code",
+          "Verify package legitimacy",
+          "Consider alternative packages",
+          "Monitor package behavior"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.6,
+        "metadata": {
+          "suspicious_indicators": [
+            "Very new package (less than 30 days old)"
+          ]
+        }
+      },
+      {
+        "package": {
+          "name": "pillow",
+          "version": "11.3.0",
+          "latest_version": "11.3.0",
+          "ecosystem": "pypi",
+          "description": "Python Imaging Library (Fork)",
+          "maintainers": [],
+          "download_count": null,
+          "last_updated": "2025-07-01 09:16:30",
+          "license": null,
+          "homepage": null,
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.MALICIOUS_PACKAGE",
+        "severity": "MEDIUM",
+        "cvss_score": 5.0,
+        "title": "Suspicious Package Characteristics",
+        "description": "Package exhibits suspicious characteristics: No maintainer information available",
+        "impact": "Potential supply chain security risk",
+        "remediation": [
+          "Review package source code",
+          "Verify package legitimacy",
+          "Consider alternative packages",
+          "Monitor package behavior"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.6,
+        "metadata": {
+          "suspicious_indicators": [
+            "No maintainer information available"
+          ]
+        }
+      },
+      {
+        "package": {
+          "name": "django",
+          "version": "5.2.6",
+          "latest_version": "5.2.6",
+          "ecosystem": "pypi",
+          "description": "A high-level Python web framework that encourages rapid development and clean, pragmatic design.",
+          "maintainers": [],
+          "download_count": null,
+          "last_updated": "2025-09-03 13:14:05",
+          "license": "BSD-3-Clause",
+          "homepage": null,
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.MALICIOUS_PACKAGE",
+        "severity": "MEDIUM",
+        "cvss_score": 5.0,
+        "title": "Suspicious Package Characteristics",
+        "description": "Package exhibits suspicious characteristics: Very new package (less than 30 days old), No maintainer information available",
+        "impact": "Potential supply chain security risk",
+        "remediation": [
+          "Review package source code",
+          "Verify package legitimacy",
+          "Consider alternative packages",
+          "Monitor package behavior"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.6,
+        "metadata": {
+          "suspicious_indicators": [
+            "Very new package (less than 30 days old)",
+            "No maintainer information available"
+          ]
+        }
+      },
+      {
+        "package": {
+          "name": "pyyaml",
+          "version": "6.0.2",
+          "latest_version": "6.0.2",
+          "ecosystem": "pypi",
+          "description": "YAML parser and emitter for Python",
+          "maintainers": [
+            "Kirill Simonov"
+          ],
+          "download_count": null,
+          "last_updated": "2024-08-06 20:33:50",
+          "license": "MIT",
+          "homepage": "https://pyyaml.org/",
+          "repository": ""
+        },
+        "risk_type": "DependencyRisk.OUTDATED_PACKAGE",
+        "severity": "LOW",
+        "cvss_score": 2.0,
+        "title": "Outdated Package",
+        "description": "Package has not been updated in 399 days",
+        "impact": "May contain unpatched security vulnerabilities",
+        "remediation": [
+          "Update to latest version",
+          "Review package maintenance status",
+          "Consider alternative actively maintained packages"
+        ],
+        "vulnerabilities": null,
+        "confidence": 0.8,
+        "metadata": {
+          "days_since_update": 399
+        }
+      }
+    ],
+    "summary": {
+      "risk_level": "MEDIUM",
+      "total_vulnerabilities": 7,
+      "severity_breakdown": {
+        "MEDIUM": 6,
+        "LOW": 1
+      },
+      "risk_types": {
+        "malicious_package": 6,
+        "outdated_package": 1
+      },
+      "critical_issues": 0,
+      "high_issues": 0
+    },
+    "recommendations": [
+      "Review suspicious packages for supply chain security",
+      "Implement automated dependency scanning in CI/CD",
+      "Enable automated security updates where possible",
+      "Regular dependency audits and updates",
+      "Use dependency pinning and lock files",
+      "Monitor security advisories for used packages"
+    ]
+  },
+  "infrastructure_analysis": {
+    "analysis_id": "INFRA_1757510341",
+    "timestamp": "2025-09-10T13:19:01.348454",
+    "filename": "Dockerfile",
+    "file_type": "docker",
+    "analysis_time": 0.000625,
+    "vulnerabilities": [
+      {
+        "id": "DOCKER_SENSITIVE_VOLUME_3706_21",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "CRITICAL",
+        "title": "Sensitive Path Mount: /var/run/docker.sock",
+        "description": "Container has access to sensitive host path: /var/run/docker.sock",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 21
+        },
+        "impact": "Container can access sensitive host resources",
+        "remediation": [
+          "Remove unnecessary volume mounts",
+          "Use read-only mounts where possible",
+          "Mount only specific required directories",
+          "Implement proper access controls"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark 5.12"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.9,
+        "metadata": {
+          "sensitive_path": "/var/run/docker.sock",
+          "line_content": "VOLUME [\"/var/run/docker.sock\", \"/etc\", \"/\"]"
+        }
+      },
+      {
+        "id": "DOCKER_ROOT_USER_4",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "HIGH",
+        "title": "Container Running as Root",
+        "description": "Container explicitly configured to run as root user",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 4
+        },
+        "impact": "Privilege escalation risk if container is compromised",
+        "remediation": [
+          "Create and use non-root user",
+          "Use USER directive with non-root user",
+          "Implement proper file permissions"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark 4.1"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.9,
+        "metadata": {
+          "user": "root"
+        }
+      },
+      {
+        "id": "DOCKER_SENSITIVE_VOLUME_9329_21",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "HIGH",
+        "title": "Sensitive Path Mount: /",
+        "description": "Container has access to sensitive host path: /",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 21
+        },
+        "impact": "Container can access sensitive host resources",
+        "remediation": [
+          "Remove unnecessary volume mounts",
+          "Use read-only mounts where possible",
+          "Mount only specific required directories",
+          "Implement proper access controls"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark 5.12"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.9,
+        "metadata": {
+          "sensitive_path": "/",
+          "line_content": "VOLUME [\"/var/run/docker.sock\", \"/etc\", \"/\"]"
+        }
+      },
+      {
+        "id": "DOCKER_SENSITIVE_VOLUME_6689_21",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "HIGH",
+        "title": "Sensitive Path Mount: /etc",
+        "description": "Container has access to sensitive host path: /etc",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 21
+        },
+        "impact": "Container can access sensitive host resources",
+        "remediation": [
+          "Remove unnecessary volume mounts",
+          "Use read-only mounts where possible",
+          "Mount only specific required directories",
+          "Implement proper access controls"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark 5.12"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.9,
+        "metadata": {
+          "sensitive_path": "/etc",
+          "line_content": "VOLUME [\"/var/run/docker.sock\", \"/etc\", \"/\"]"
+        }
+      },
+      {
+        "id": "DOCKER_SENSITIVE_VOLUME_9292_21",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "HIGH",
+        "title": "Sensitive Path Mount: /var",
+        "description": "Container has access to sensitive host path: /var",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 21
+        },
+        "impact": "Container can access sensitive host resources",
+        "remediation": [
+          "Remove unnecessary volume mounts",
+          "Use read-only mounts where possible",
+          "Mount only specific required directories",
+          "Implement proper access controls"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark 5.12"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.9,
+        "metadata": {
+          "sensitive_path": "/var",
+          "line_content": "VOLUME [\"/var/run/docker.sock\", \"/etc\", \"/\"]"
+        }
+      },
+      {
+        "id": "DOCKER_SECRET_23_10",
+        "risk_type": "InfrastructureRisk.DATA_EXPOSURE",
+        "severity": "HIGH",
+        "title": "Hardcoded Secret: Secret in Environment Variable",
+        "description": "Potential hardcoded secret detected: Secret in Environment Variable",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 10
+        },
+        "impact": "Secrets exposed in container image",
+        "remediation": [
+          "Use Docker secrets management",
+          "Use environment variables for secrets",
+          "Implement secure secret injection",
+          "Remove secrets from image layers"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://docs.docker.com/engine/swarm/secrets/",
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.8,
+        "metadata": {
+          "pattern": "(?i)ENV\\s+(.*(?:password|pwd|pass|api_key|apikey|secret|token).*)",
+          "line_content": "ENV PASSWORD=hardcoded_secret_123"
+        }
+      },
+      {
+        "id": "DOCKER_SECRET_8229_11",
+        "risk_type": "InfrastructureRisk.DATA_EXPOSURE",
+        "severity": "HIGH",
+        "title": "Hardcoded Secret: OpenAI API Key",
+        "description": "Potential hardcoded secret detected: OpenAI API Key",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 11
+        },
+        "impact": "Secrets exposed in container image",
+        "remediation": [
+          "Use Docker secrets management",
+          "Use environment variables for secrets",
+          "Implement secure secret injection",
+          "Remove secrets from image layers"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://docs.docker.com/engine/swarm/secrets/",
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.8,
+        "metadata": {
+          "pattern": "sk-[a-zA-Z0-9]{10,}",
+          "line_content": "ENV API_KEY=sk-test123456789"
+        }
+      },
+      {
+        "id": "DOCKER_SECRET_23_11",
+        "risk_type": "InfrastructureRisk.DATA_EXPOSURE",
+        "severity": "HIGH",
+        "title": "Hardcoded Secret: Secret in Environment Variable",
+        "description": "Potential hardcoded secret detected: Secret in Environment Variable",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 11
+        },
+        "impact": "Secrets exposed in container image",
+        "remediation": [
+          "Use Docker secrets management",
+          "Use environment variables for secrets",
+          "Implement secure secret injection",
+          "Remove secrets from image layers"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://docs.docker.com/engine/swarm/secrets/",
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.8,
+        "metadata": {
+          "pattern": "(?i)ENV\\s+(.*(?:password|pwd|pass|api_key|apikey|secret|token).*)",
+          "line_content": "ENV API_KEY=sk-test123456789"
+        }
+      },
+      {
+        "id": "DOCKER_DANGEROUS_PORT_22_5",
+        "risk_type": "InfrastructureRisk.NETWORK_SECURITY",
+        "severity": "HIGH",
+        "title": "Dangerous Port Exposed: SSH",
+        "description": "Port 22 (SSH) is exposed",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 5
+        },
+        "impact": "Network exposure of SSH service",
+        "remediation": [
+          "Review if port exposure is necessary",
+          "Use secure alternatives (HTTPS instead of HTTP)",
+          "Implement proper network controls",
+          "Use authentication and encryption"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.7,
+        "metadata": {
+          "port": 22,
+          "service": "SSH"
+        }
+      },
+      {
+        "id": "DOCKER_INSECURE_IMAGE_3",
+        "risk_type": "InfrastructureRisk.CONTAINER_SECURITY",
+        "severity": "MEDIUM",
+        "title": "Insecure Base Image Usage",
+        "description": "Using 'latest' tag is not recommended",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 3
+        },
+        "impact": "Unpredictable and potentially vulnerable base image",
+        "remediation": [
+          "Use specific version tags instead of 'latest'",
+          "Pin to specific image SHA",
+          "Use minimal base images (alpine, distroless)",
+          "Regularly update base images"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark 4.7"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.8,
+        "metadata": {
+          "line_content": "FROM ubuntu:latest",
+          "pattern": "FROM\\s+.*:latest"
+        }
+      },
+      {
+        "id": "DOCKER_DANGEROUS_PORT_3306_6",
+        "risk_type": "InfrastructureRisk.NETWORK_SECURITY",
+        "severity": "MEDIUM",
+        "title": "Dangerous Port Exposed: MySQL",
+        "description": "Port 3306 (MySQL) is exposed",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 6
+        },
+        "impact": "Network exposure of MySQL service",
+        "remediation": [
+          "Review if port exposure is necessary",
+          "Use secure alternatives (HTTPS instead of HTTP)",
+          "Implement proper network controls",
+          "Use authentication and encryption"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.7,
+        "metadata": {
+          "port": 3306,
+          "service": "MySQL"
+        }
+      },
+      {
+        "id": "DOCKER_DANGEROUS_PORT_80_7",
+        "risk_type": "InfrastructureRisk.NETWORK_SECURITY",
+        "severity": "MEDIUM",
+        "title": "Dangerous Port Exposed: HTTP (unencrypted)",
+        "description": "Port 80 (HTTP (unencrypted)) is exposed",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile",
+          "line": 7
+        },
+        "impact": "Network exposure of HTTP (unencrypted) service",
+        "remediation": [
+          "Review if port exposure is necessary",
+          "Use secure alternatives (HTTPS instead of HTTP)",
+          "Implement proper network controls",
+          "Use authentication and encryption"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://www.cisecurity.org/benchmark/docker"
+        ],
+        "confidence": 0.7,
+        "metadata": {
+          "port": 80,
+          "service": "HTTP (unencrypted)"
+        }
+      },
+      {
+        "id": "DOCKER_NO_RESOURCE_LIMITS",
+        "risk_type": "InfrastructureRisk.CONTAINER_SECURITY",
+        "severity": "MEDIUM",
+        "title": "No Resource Limits Configured",
+        "description": "Container has no CPU or memory limits",
+        "resource_type": "dockerfile",
+        "resource_name": "Dockerfile",
+        "location": {
+          "file": "Dockerfile"
+        },
+        "impact": "Container can consume unlimited host resources",
+        "remediation": [
+          "Implement CPU limits (--cpus)",
+          "Implement memory limits (--memory)",
+          "Use docker-compose resource constraints",
+          "Monitor resource usage"
+        ],
+        "compliance_violations": [
+          "CIS Docker Benchmark"
+        ],
+        "references": [
+          "https://docs.docker.com/config/containers/resource_constraints/"
+        ],
+        "confidence": 0.7,
+        "metadata": {
+          "issue": "no_resource_limits"
+        }
+      }
+    ],
+    "summary": {
+      "risk_level": "CRITICAL",
+      "total_vulnerabilities": 13,
+      "severity_breakdown": {
+        "CRITICAL": 1,
+        "HIGH": 8,
+        "MEDIUM": 4
+      },
+      "risk_types": {
+        "privilege_escalation": 5,
+        "data_exposure": 3,
+        "network_security": 3,
+        "container_security": 2
+      },
+      "critical_issues": 1,
+      "high_issues": 8
+    },
+    "compliance_assessment": {
+      "total_violations": 4,
+      "standards_violated": [
+        "CIS Docker Benchmark 5.12",
+        "CIS Docker Benchmark 4.1",
+        "CIS Docker Benchmark",
+        "CIS Docker Benchmark 4.7"
+      ],
+      "violations_by_standard": {
+        "CIS Docker Benchmark 5.12": [
+          "DOCKER_SENSITIVE_VOLUME_3706_21",
+          "DOCKER_SENSITIVE_VOLUME_9329_21",
+          "DOCKER_SENSITIVE_VOLUME_6689_21",
+          "DOCKER_SENSITIVE_VOLUME_9292_21"
+        ],
+        "CIS Docker Benchmark 4.1": [
+          "DOCKER_ROOT_USER_4"
+        ],
+        "CIS Docker Benchmark": [
+          "DOCKER_SECRET_23_10",
+          "DOCKER_SECRET_8229_11",
+          "DOCKER_SECRET_23_11",
+          "DOCKER_DANGEROUS_PORT_22_5",
+          "DOCKER_DANGEROUS_PORT_3306_6",
+          "DOCKER_DANGEROUS_PORT_80_7",
+          "DOCKER_NO_RESOURCE_LIMITS"
+        ],
+        "CIS Docker Benchmark 4.7": [
+          "DOCKER_INSECURE_IMAGE_3"
+        ]
+      }
+    },
+    "recommendations": [
+      "URGENT: Address critical infrastructure vulnerabilities immediately",
+      "High Priority: Fix 8 high-severity infrastructure issues",
+      "Review and implement principle of least privilege",
+      "Harden container configurations and remove unnecessary privileges",
+      "Review network security controls and restrict unnecessary access",
+      "Implement encryption and access controls for sensitive data",
+      "Implement infrastructure as code security scanning",
+      "Regular security audits of cloud configurations"
+    ]
+  },
+  "kubernetes_analysis": {
+    "analysis_id": "INFRA_1757510341",
+    "timestamp": "2025-09-10T13:19:01.349716",
+    "filename": "vulnerable-pod.yaml",
+    "file_type": "kubernetes",
+    "analysis_time": 0.001164,
+    "vulnerabilities": [
+      {
+        "id": "K8S_PRIVILEGED_CONTAINER_vulnerable-pod_app-container",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "CRITICAL",
+        "title": "Privileged Container",
+        "description": "Container 'app-container' in pod 'vulnerable-pod' is privileged",
+        "resource_type": "kubernetes",
+        "resource_name": "vulnerable-pod",
+        "location": {
+          "file": "vulnerable-pod.yaml",
+          "resource": "vulnerable-pod",
+          "container": "app-container"
+        },
+        "impact": "Container has full access to host system",
+        "remediation": [
+          "Remove privileged: true",
+          "Use specific capabilities instead",
+          "Implement proper RBAC"
+        ],
+        "compliance_violations": [
+          "CIS Kubernetes Benchmark 5.2.1"
+        ],
+        "references": [
+          "https://kubernetes.io/docs/concepts/policy/pod-security-policy/"
+        ],
+        "confidence": 0.95,
+        "metadata": {
+          "pod_name": "vulnerable-pod",
+          "container_name": "app-container"
+        }
+      },
+      {
+        "id": "K8S_ROOT_USER_vulnerable-pod",
+        "risk_type": "InfrastructureRisk.PRIVILEGE_ESCALATION",
+        "severity": "HIGH",
+        "title": "Pod Running as Root",
+        "description": "Pod 'vulnerable-pod' may be running as root user",
+        "resource_type": "kubernetes",
+        "resource_name": "vulnerable-pod",
+        "location": {
+          "file": "vulnerable-pod.yaml",
+          "resource": "vulnerable-pod"
+        },
+        "impact": "Container has unnecessary privileges",
+        "remediation": [
+          "Set runAsNonRoot: true in securityContext",
+          "Set runAsUser to non-root UID",
+          "Follow principle of least privilege"
+        ],
+        "compliance_violations": [
+          "CIS Kubernetes Benchmark 5.2.6"
+        ],
+        "references": [
+          "https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
+        ],
+        "confidence": 0.7,
+        "metadata": {
+          "pod_name": "vulnerable-pod"
+        }
+      },
+      {
+        "id": "K8S_LOADBALANCER_vulnerable-service",
+        "risk_type": "InfrastructureRisk.NETWORK_SECURITY",
+        "severity": "MEDIUM",
+        "title": "LoadBalancer Service Type",
+        "description": "Service 'vulnerable-service' uses LoadBalancer type",
+        "resource_type": "kubernetes",
+        "resource_name": "vulnerable-service",
+        "location": {
+          "file": "vulnerable-pod.yaml",
+          "resource": "vulnerable-service"
+        },
+        "impact": "Service exposed to external traffic",
+        "remediation": [
+          "Review if external access is necessary",
+          "Use ClusterIP or NodePort if appropriate",
+          "Implement proper network policies",
+          "Use ingress controllers for HTTP traffic"
+        ],
+        "compliance_violations": [],
+        "references": [
+          "https://kubernetes.io/docs/concepts/services-networking/service/"
+        ],
+        "confidence": 0.6,
+        "metadata": {
+          "service_name": "vulnerable-service",
+          "service_type": "LoadBalancer"
+        }
+      }
+    ],
+    "summary": {
+      "risk_level": "CRITICAL",
+      "total_vulnerabilities": 3,
+      "severity_breakdown": {
+        "CRITICAL": 1,
+        "HIGH": 1,
+        "MEDIUM": 1
+      },
+      "risk_types": {
+        "privilege_escalation": 2,
+        "network_security": 1
+      },
+      "critical_issues": 1,
+      "high_issues": 1
+    },
+    "compliance_assessment": {
+      "total_violations": 2,
+      "standards_violated": [
+        "CIS Kubernetes Benchmark 5.2.1",
+        "CIS Kubernetes Benchmark 5.2.6"
+      ],
+      "violations_by_standard": {
+        "CIS Kubernetes Benchmark 5.2.1": [
+          "K8S_PRIVILEGED_CONTAINER_vulnerable-pod_app-container"
+        ],
+        "CIS Kubernetes Benchmark 5.2.6": [
+          "K8S_ROOT_USER_vulnerable-pod"
+        ]
+      }
+    },
+    "recommendations": [
+      "URGENT: Address critical infrastructure vulnerabilities immediately",
+      "High Priority: Fix 1 high-severity infrastructure issues",
+      "Review and implement principle of least privilege",
+      "Review network security controls and restrict unnecessary access",
+      "Implement infrastructure as code security scanning",
+      "Regular security audits of cloud configurations",
+      "Enable compliance monitoring and alerting",
+      "Implement security policy enforcement"
+    ]
+  }
+}

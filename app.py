@@ -11,6 +11,9 @@ import re
 from datetime import datetime
 
 from audit_mind import AuditMindSimple
+from advanced_security_engine import AdvancedSecurityEngine
+from dependency_scanner import DependencyScanner
+from infrastructure_analyzer import InfrastructureSecurityEngine
 
 
 app = FastAPI(
@@ -31,6 +34,11 @@ app.add_middleware(
 
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
 auditor = AuditMindSimple(openrouter_api_key=OPENROUTER_API_KEY, enable_llm=True)
+
+# Initialize advanced security engines
+advanced_engine = AdvancedSecurityEngine()
+dependency_scanner = DependencyScanner()
+infrastructure_analyzer = InfrastructureSecurityEngine()
 
 
 def emergency_json_cleanup(response_text: str) -> str:
@@ -145,6 +153,22 @@ class FileAnalysisRequest(BaseModel):
     context: Optional[str] = None
     history: Optional[List[Dict[str, Any]]] = None
 
+class AdvancedAnalysisRequest(BaseModel):
+    code: str
+    filename: Optional[str] = "<string>"
+    language: Optional[str] = "python"
+    analysis_type: Optional[str] = "comprehensive"  # comprehensive, static, semantic
+
+class DependencyAnalysisRequest(BaseModel):
+    file_content: str
+    filename: str
+    include_license_check: Optional[bool] = False
+    
+class InfrastructureAnalysisRequest(BaseModel):
+    content: str
+    filename: str
+    config_type: Optional[str] = "auto"  # auto, docker, kubernetes, terraform, cloudformation
+
 @app.get("/")
 async def root():
     """Root endpoint - API information"""
@@ -154,6 +178,9 @@ async def root():
         "endpoints": {
             "health": "/health",
             "analyze": "/analyze",
+            "analyze_advanced": "/analyze/advanced",
+            "analyze_dependencies": "/analyze/dependencies", 
+            "analyze_infrastructure": "/analyze/infrastructure",
             "chat": "/chat",
             "models": "/models"
         }
@@ -479,6 +506,134 @@ async def analyze_file_with_chat(request: FileAnalysisRequest):
             status_code=500,
             detail=f"File analysis failed: {type(e).__name__}: {str(e)}"
         )
+
+@app.post("/analyze/advanced")
+async def analyze_advanced(request: AdvancedAnalysisRequest):
+    """Advanced multi-layer security analysis"""
+    try:
+        if not request.code.strip():
+            raise HTTPException(status_code=400, detail="Code cannot be empty")
+        
+        # Perform advanced analysis using the new engine
+        result = advanced_engine.analyze_code(
+            code=request.code,
+            filename=request.filename,
+            language=request.language
+        )
+        
+        # Add API metadata
+        result["api_version"] = "2.0.0"
+        result["analysis_engine"] = "advanced_multi_layer"
+        result["request_id"] = f"adv_{int(datetime.now().timestamp())}"
+        
+        return result
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Advanced analysis failed: {str(e)}"
+        )
+
+@app.post("/analyze/dependencies")
+async def analyze_dependencies(request: DependencyAnalysisRequest):
+    """Dependency vulnerability scanning"""
+    try:
+        if not request.file_content.strip():
+            raise HTTPException(status_code=400, detail="File content cannot be empty")
+        
+        # Perform dependency analysis
+        result = dependency_scanner.scan_dependencies(
+            file_content=request.file_content,
+            filename=request.filename
+        )
+        
+        # Add API metadata
+        result["api_version"] = "2.0.0"
+        result["analysis_type"] = "dependency_vulnerability_scan"
+        result["request_id"] = f"dep_{int(datetime.now().timestamp())}"
+        
+        return result
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Dependency analysis failed: {str(e)}"
+        )
+
+@app.post("/analyze/infrastructure")
+async def analyze_infrastructure(request: InfrastructureAnalysisRequest):
+    """Infrastructure configuration security analysis"""
+    try:
+        if not request.content.strip():
+            raise HTTPException(status_code=400, detail="Content cannot be empty")
+        
+        # Perform infrastructure analysis
+        result = infrastructure_analyzer.analyze_infrastructure(
+            content=request.content,
+            filename=request.filename
+        )
+        
+        # Add API metadata
+        result["api_version"] = "2.0.0"
+        result["analysis_type"] = "infrastructure_security_scan"
+        result["request_id"] = f"infra_{int(datetime.now().timestamp())}"
+        
+        return result
+        
+    except Exception as e:
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Infrastructure analysis failed: {str(e)}"
+        )
+
+@app.get("/analyze/capabilities")
+async def get_analysis_capabilities():
+    """Get analysis capabilities and supported file types"""
+    return {
+        "advanced_analysis": {
+            "supported_languages": ["python", "javascript", "typescript", "java", "go", "rust"],
+            "detection_layers": [
+                "AST_STATIC_ANALYSIS",
+                "SEMANTIC_ANALYSIS", 
+                "PATTERN_MATCHING"
+            ],
+            "vulnerability_types": [
+                "injection", "hardcoded_secrets", "insecure_communication",
+                "broken_access_control", "cryptographic_failures",
+                "identification_auth_failures"
+            ]
+        },
+        "dependency_analysis": {
+            "supported_ecosystems": ["pypi", "npm", "maven", "go"],
+            "supported_files": [
+                "requirements.txt", "package.json", "Pipfile",
+                "yarn.lock", "pom.xml", "go.mod"
+            ],
+            "vulnerability_sources": ["OSV Database", "Package Intelligence"],
+            "risk_types": [
+                "known_vulnerability", "outdated_package", "malicious_package",
+                "license_violation", "supply_chain_attack"
+            ]
+        },
+        "infrastructure_analysis": {
+            "supported_types": [
+                "docker", "docker-compose", "kubernetes", 
+                "terraform", "cloudformation"
+            ],
+            "supported_files": [
+                "Dockerfile", "docker-compose.yml", "*.yaml", "*.yml",
+                "*.tf", "*.json"
+            ],
+            "compliance_standards": [
+                "CIS Docker Benchmark", "CIS Kubernetes Benchmark",
+                "CIS AWS Foundations", "PCI DSS", "SOC2"
+            ],
+            "risk_categories": [
+                "container_security", "cloud_misconfiguration",
+                "network_security", "access_control", "encryption_issues"
+            ]
+        }
+    }
 
 @app.get("/stats")
 async def get_stats():
