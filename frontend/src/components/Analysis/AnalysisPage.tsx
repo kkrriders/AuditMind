@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Play, Upload, ArrowLeft, MessageCircle } from 'lucide-react';
 import CodeEditor from '@/components/CodeEditor';
 import RiskDashboard from '@/components/RiskDashboard';
-import { useAnalyzeCode, useHealth } from '@/hooks/useAnalysis';
+import { useAnalyzeCode } from '@/hooks/useAnalysis';
 import { AnalysisResult } from '@/utils/api';
 
 interface AnalysisPageProps {
@@ -19,7 +19,6 @@ export default function AnalysisPage({ onBack, onOpenChat, analysisContext }: An
   const [result, setResult] = useState<AnalysisResult | null>(analysisContext || null);
 
   const analyzeCodeMutation = useAnalyzeCode();
-  const { data: healthData } = useHealth();
 
   const handleAnalyze = async () => {
     if (!code.trim()) {
@@ -41,32 +40,29 @@ export default function AnalysisPage({ onBack, onOpenChat, analysisContext }: An
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen" style={{backgroundColor: 'var(--bg-primary)'}}>
       {/* Navigation Bar */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-4 sm:px-6 lg:px-8 py-4">
+      <div className="border-b px-4 sm:px-6 lg:px-8 py-4" style={{backgroundColor: 'var(--bg-card)', borderBottomColor: 'var(--border-default)'}}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
               onClick={onBack}
-              className="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="flex items-center gap-2 px-4 py-2 transition-colors hover:transform hover:scale-105"
+              style={{color: 'var(--text-secondary)'}}
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Welcome
             </button>
-            <div className="h-6 w-px bg-gray-300 dark:bg-gray-600" />
-            <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <div className="h-6 w-px" style={{backgroundColor: 'var(--border-default)'}} />
+            <h1 className="text-xl font-semibold text-white">
               Security Analysis
             </h1>
           </div>
           
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-              <div className={`w-2 h-2 rounded-full ${healthData?.status === 'healthy' ? 'bg-green-500' : 'bg-red-500'}`}></div>
-              {healthData?.status === 'healthy' ? 'Backend Online' : 'Backend Offline'}
-            </div>
             <button
               onClick={onOpenChat}
-              className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+              className="btn-secondary flex items-center gap-2 px-4 py-2 rounded-lg hover:transform hover:scale-105"
             >
               <MessageCircle className="w-4 h-4" />
               Ask Expert

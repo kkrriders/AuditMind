@@ -5,7 +5,7 @@
 ### Prerequisites
 1. GitHub account with this repository
 2. Render account (free tier available)
-3. OpenRouter API key (free tier available)
+3. OpenRouter API key (get from [openrouter.ai](https://openrouter.ai))
 
 ### Steps
 
@@ -14,7 +14,7 @@
    git init
    git add .
    git commit -m "Initial AuditMind deployment"
-   git remote add origin https://github.com/yourusername/auditmind.git
+   git remote add origin https://github.com/kkrriders/AuditMind
    git push -u origin main
    ```
 
@@ -24,29 +24,28 @@
    - Create new "Web Service"
    - Select your AuditMind repository
    - Use these settings:
-     - **Build Command**: `pip install -r requirements_web.txt`
-     - **Start Command**: `python web_api.py`
+     - **Build Command**: `pip install -r requirements.txt`
+     - **Start Command**: `./start.sh`
      - **Environment Variables**:
-       - `OPENROUTER_API_KEY`: `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`
-       - `PORT`: `10000`
-       - `PYTHONUNBUFFERED`: `1`
+       - `OPENROUTER_API_KEY`: Your OpenRouter API key
+       - `PORT`: 8000 (optional, defaults to 8000)
 
 3. **Test Deployment**
    - Your API will be available at: `https://your-app-name.onrender.com`
    - Test endpoints:
+     - `GET /` - API information
      - `GET /health` - Check if service is running
      - `POST /analyze` - Analyze documents
-     - `GET /example/security` - Test with example
 
 ## 🖥️ Local Development
 
 ### Windows Setup
 ```cmd
 # Install Python dependencies
-pip install -r requirements_web.txt
+pip install -r requirements.txt
 
-# Set environment variable (optional)
-set OPENROUTER_API_KEY=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
+# Set environment variable
+set OPENROUTER_API_KEY=your_openrouter_api_key_here
 
 # Run the web server
 python web_api.py
@@ -55,12 +54,26 @@ python web_api.py
 ### Linux/Mac Setup
 ```bash
 # Install dependencies
-pip install -r requirements_web.txt
+pip install -r requirements.txt
 
-# Set environment variable (optional)
-export OPENROUTER_API_KEY=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
+# Set environment variable
+export OPENROUTER_API_KEY=your_openrouter_api_key_here
 
 # Run the web server
+python web_api.py
+```
+
+### Using .env File (Recommended)
+Create a `.env` file in the project root:
+```env
+OPENROUTER_API_KEY=your_openrouter_api_key_here
+PORT=8000
+CORS_ORIGINS=*
+LOG_LEVEL=info
+```
+
+Then run:
+```bash
 python web_api.py
 ```
 
@@ -68,7 +81,7 @@ python web_api.py
 
 ### Base URL
 - Local: `http://localhost:8000`
-- Render: `https://your-app.onrender.com`
+- Deployed: `https://your-app-name.onrender.com`
 
 ### Available Endpoints
 

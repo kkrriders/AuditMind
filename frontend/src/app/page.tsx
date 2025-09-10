@@ -9,7 +9,7 @@ import { AnalysisResult } from '@/utils/api';
 
 export default function Home() {
   const [currentView, setCurrentView] = useState<'welcome' | 'analysis'>('welcome');
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
   const [result] = useState<AnalysisResult | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className={`${theme === 'dark' ? 'dark' : ''}`}>
+    <div className="dark">
       {currentView === 'analysis' && (
         <Header theme={theme} onThemeToggle={handleThemeToggle} />
       )}

@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0d1117;
+  --foreground: #f0f6fc;
+  
+  /* Professional Dark Theme - inspired by GitHub Dark & VS Code */
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-card: #1c2128;
+  --bg-elevated: #262c36;
+  
+  /* Professional accent colors */
+  --accent-primary: #58a6ff;      /* Professional blue */
+  --accent-secondary: #39d353;    /* Success green */
+  --accent-tertiary: #f85149;     /* Danger red */
+  --accent-warning: #d29922;      /* Warning amber */
+  --accent-info: #79c0ff;         /* Info light blue */
+  --accent-purple: #bc8cff;       /* Purple accent */
+  
+  /* Text colors */
+  --text-primary: #f0f6fc;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --text-subtle: #484f58;
+  
+  /* Border colors */
+  --border-default: #30363d;
+  --border-muted: #21262d;
+  --border-subtle: #1c2128;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
-}
+/* Theme configuration removed due to compatibility issues with current build setup */
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/* Professional gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #0f172a 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 50%, #111827 100%);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
+}
+
+/* Professional card styling */
+.pro-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pro-card:hover {
+  border-color: var(--border-muted);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Professional button styling */
+.btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary:hover {
+  background: #4c94ff;
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-secondary);
+  border: 1px solid var(--accent-secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(57, 211, 83, 0.1);
+  box-shadow: 0 0 0 1px var(--accent-secondary);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.text-success {
+  color: var(--accent-secondary);
+}
+
+.text-danger {
+  color: var(--accent-tertiary);
+}
+
+.border-glow {
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 0 1px rgba(88, 166, 255, 0.3);
 }
 
 /* Custom scrollbar styling */
@@ -30,14 +128,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(156 163 175 / 0.5);
+  background: var(--border-default);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(107 114 128 / 0.7);
+  background: var(--accent-primary);
 }
