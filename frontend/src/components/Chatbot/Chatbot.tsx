@@ -45,6 +45,36 @@ export default function Chatbot({ isOpen, onClose, analysisContext }: ChatbotPro
     }
   }, [isOpen]);
 
+  // Auto-resize textarea based on content
+  const adjustTextareaHeight = () => {
+    if (inputRef.current) {
+      const textarea = inputRef.current;
+      textarea.style.height = 'auto';
+      
+      // Calculate the height needed
+      const scrollHeight = textarea.scrollHeight;
+      const lineHeight = 20; // Approximate line height
+      const padding = 16; // Total padding (8px top + 8px bottom)
+      const minHeight = lineHeight + padding; // Minimum height for one line
+      const maxHeight = lineHeight * 4 + padding; // Maximum height for 4 lines
+      
+      // Set height based on content, with min/max constraints
+      const newHeight = Math.min(Math.max(scrollHeight, minHeight), maxHeight);
+      textarea.style.height = `${newHeight}px`;
+      
+      // Show/hide scrollbar based on content overflow
+      if (scrollHeight > maxHeight) {
+        textarea.style.overflowY = 'auto';
+      } else {
+        textarea.style.overflowY = 'hidden';
+      }
+    }
+  };
+
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, [input]);
+
   const handleFileUpload = (file: UploadedFile) => {
     setUploadedFiles(prev => [...prev, file]);
   };
@@ -293,15 +323,18 @@ export default function Chatbot({ isOpen, onClose, analysisContext }: ChatbotPro
               <textarea
                 ref={inputRef}
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  setTimeout(adjustTextareaHeight, 0);
+                }}
                 onKeyPress={handleKeyPress}
+                onInput={adjustTextareaHeight}
                 placeholder={uploadedFiles.length > 0 
                   ? "Ask me about the uploaded files..." 
                   : "Ask me about security, vulnerabilities, or upload files for analysis..."
                 }
-                className="w-full resize-none rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                rows={1}
-                style={{ minHeight: '40px', maxHeight: '100px' }}
+                className="w-full resize-none rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 leading-5"
+                style={{ minHeight: '36px' }}
                 disabled={chatMutation.isPending || fileAnalysisMutation.isPending}
               />
             </div>

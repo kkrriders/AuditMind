@@ -31,6 +31,8 @@ export default function FileUpload({
 }: FileUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): string | null => {
@@ -51,11 +53,35 @@ export default function FileUpload({
   const readFileContent = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
+      
+      reader.onloadstart = () => {
+        setUploadProgress(0);
+        setIsUploading(true);
+      };
+      
+      reader.onprogress = (e) => {
+        if (e.lengthComputable) {
+          const progress = Math.round((e.loaded / e.total) * 100);
+          setUploadProgress(progress);
+        }
+      };
+      
       reader.onload = (e) => {
         const content = e.target?.result as string;
+        setUploadProgress(100);
+        setTimeout(() => {
+          setUploadProgress(null);
+          setIsUploading(false);
+        }, 500);
         resolve(content);
       };
-      reader.onerror = () => reject(new Error('Failed to read file'));
+      
+      reader.onerror = () => {
+        setUploadProgress(null);
+        setIsUploading(false);
+        reject(new Error('Failed to read file'));
+      };
+      
       reader.readAsText(file);
     });
   };
@@ -90,7 +116,7 @@ export default function FileUpload({
     e.preventDefault();
     setIsDragging(false);
 
-    if (disabled) return;
+    if (disabled || isUploading) return;
 
     const files = Array.from(e.dataTransfer.files);
     if (files.length > 0) {
@@ -135,7 +161,7 @@ export default function FileUpload({
           if (!disabled) setIsDragging(true);
         }}
         onDragLeave={() => setIsDragging(false)}
-        onClick={() => !disabled && fileInputRef.current?.click()}
+        onClick={() => !disabled && !isUploading && fileInputRef.current?.click()}
       >
         <input
           ref={fileInputRef}
@@ -143,15 +169,31 @@ export default function FileUpload({
           accept={acceptedTypes.join(',')}
           onChange={handleFileInputChange}
           className="hidden"
-          disabled={disabled}
+          disabled={disabled || isUploading}
         />
 
         <div className="flex items-center justify-center space-x-2 text-sm">
           <Upload size={16} className="text-gray-500 dark:text-gray-400" />
           <span className="text-gray-600 dark:text-gray-300">
-            {isDragging ? 'Drop file here' : 'Click to upload or drag & drop'}
+            {isUploading 
+              ? `Uploading... ${uploadProgress}%`
+              : isDragging 
+                ? 'Drop file here' 
+                : 'Click to upload or drag & drop'
+            }
           </span>
         </div>
+        
+        {isUploading && uploadProgress !== null && (
+          <div className="mt-2">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1">
+              <div 
+                className="bg-purple-600 h-1 rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${uploadProgress}%` }}
+              />
+            </div>
+          </div>
+        )}
         <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-1">
           Max {Math.round(maxFileSize / (1024 * 1024))}MB • {acceptedTypes.slice(0, 5).join(', ')}
           {acceptedTypes.length > 5 && ` + ${acceptedTypes.length - 5} more`}
